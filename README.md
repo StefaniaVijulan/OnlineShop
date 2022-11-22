@@ -18,3 +18,7 @@ Pentru a putea sa va legati proiectul cu baza de date va trebui sa faceti urmato
 4. Select `Environment variables`
 5. Completati caseta de input cu `DB_USER=nume_db;DB_PASS=parola_db` unde nume_db este numele bazei de date (in general root) si parola_db este parola bazei de date
 6. Click `OK`
+
+
+*Testare proiect*
+1. Accesati urmatorul link: https://app.getpostman.com/join-team?invite_code=147bf32f4c966ecfdeca41b0075361a0&target_code=d3343bee3449e454ec7a3b04c39eb230
