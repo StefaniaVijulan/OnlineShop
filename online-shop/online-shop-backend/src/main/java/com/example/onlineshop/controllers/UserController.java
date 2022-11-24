@@ -48,7 +48,6 @@ public class UserController {
     @PostMapping(path = "/register")
     public User registerModerator(@RequestBody User user) throws Exception {
         return userService.registerUser(user);
-
     }
 
     @GetMapping(path="/changePass")
