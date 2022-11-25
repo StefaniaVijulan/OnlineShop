@@ -8,8 +8,8 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Autentificare</a>
-      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Înregistrare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="/register" routerLinkActive="active">Autentificare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="/login" routerLinkActive="active">Înregistrare</a>
 
       <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Editează contul</a>
       <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" (click)="signOut()">Ieși din cont</a>

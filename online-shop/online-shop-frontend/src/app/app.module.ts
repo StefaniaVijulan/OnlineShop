@@ -13,6 +13,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {SearchPipe} from "./services/search.pipe";
 import { ProductDetailsComponent } from './pages/products-tab/product-details/product-details.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProductDetailsComponent } from './pages/products-tab/product-details/pr
     AboutComponent,
     ProductsTabComponent,
     SearchPipe,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
