@@ -1,0 +1,40 @@
+img {
+  height: 300px;
+  width: 300px;
+  border: #22577a 1px solid;
+}
+
+ngb-carousel{
+  height: 300px;
+  width: 300px;
+}
+
+.page_title{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  color: #38a3a5;
+}
+
+#content_about{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  margin-left: 15%;
+  margin-right: 12%;
+  margin-top: 80px;
+  vertical-align: center;
+}
+
+.info_about{
+  padding-top: 40px;
+}
+
+#info_title{
+  font-weight: bolder;
+  text-decoration: underline #22577a;
+}
+
+#info_text{
+  text-align: justify;
+}

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-custom ">
+
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <a class ="nav-link"  routerLink="" routerLinkActive="active">Despre noi</a>
+      <a class ="nav-link"  routerLink="/products" routerLinkActive="active">Produse</a>
+      <a class ="nav-link"  routerLink="#" routerLinkActive="active">Designeri</a>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Autentificare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Înregistrare</a>
+
+      <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Editează contul</a>
+      <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" (click)="signOut()">Ieși din cont</a>
+    </ul>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>
+
