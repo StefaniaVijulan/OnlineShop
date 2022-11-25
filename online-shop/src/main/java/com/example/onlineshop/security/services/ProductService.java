@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +31,11 @@ public class ProductService {
     {
          productRepository.save(product);
          return product;
+    }
+
+    public Optional<Product> getProduct(Long id)
+    {
+        return productRepository.findById(id);
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/product")
@@ -27,6 +28,12 @@ public class ProductController {
     {
 
         return ResponseEntity.ok(productService.addProduct(product));
+    }
+
+    @GetMapping("/oneProduct/{id}")
+    public ResponseEntity<Optional<Product>> getProduct(@PathVariable Long id)
+    {
+        return ResponseEntity.ok(productService.getProduct(id));
     }
 
 }
