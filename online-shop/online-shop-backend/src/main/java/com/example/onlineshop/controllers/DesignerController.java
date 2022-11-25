@@ -1,9 +1,10 @@
 package com.example.onlineshop.controllers;
 
 import com.example.onlineshop.security.config.JwtUtil;
+import com.example.onlineshop.security.dto.LoginDesignerResponse;
 import com.example.onlineshop.security.dto.LoginRequest;
-import com.example.onlineshop.security.dto.LoginResponse;
-import com.example.onlineshop.security.models.User;
+import com.example.onlineshop.security.models.Designer;
+import com.example.onlineshop.security.services.DesignerService;
 import com.example.onlineshop.security.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,49 +15,55 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
-public class UserController {
+public class DesignerController {
+
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private JwtUtil jwtTokenUtil;
 
     @Autowired
-    private UserService userService;
-    @PostMapping(path = "/login")
+    private DesignerService designerService;
+
+    @PostMapping(path = "/loginDesigner")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
         //    excelReadService.ReadDataFromExcel("src/main/resources/excelFile/UserDB.xlsx");
 
         try {
+
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
                             loginRequest.getPassword()));
         }
-        catch (BadCredentialsException e) {
+        catch (Exception e) {
+            System.out.println(e);
             return null;
         }
         final UserDetails userDetails = userService
                 .loadUserByUsername(loginRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
-        User currentUser= userService.loginUser(loginRequest.getUsername(), loginRequest.getPassword());
-        System.out.println(new LoginResponse(jwt, currentUser));
-        return ResponseEntity.ok(new LoginResponse(jwt, currentUser));
-    }
-    @PostMapping(path = "/register")
-    public User registerUser(@RequestBody User user) throws Exception {
-        return userService.registerUser(user);
+        Designer currentUser= designerService.loginDesigner(loginRequest.getUsername(), loginRequest.getPassword());
+        System.out.println("currentUser "+ currentUser);
+        return ResponseEntity.ok(new LoginDesignerResponse(jwt, currentUser));
     }
 
-    @GetMapping(path="/changePass")
-    public User changePass(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("cnpU")String cnpC) throws Exception {
-        return userService.changePassword(oldPass, newPass, cnpC);
+    @PostMapping(path = "/registerDesigner")
+    public Designer register(@RequestBody Designer designer) throws Exception {
+        return designerService.addDesigner(designer);
     }
-
-    @PutMapping(("/forgotPass"))
-    public User forgotPass(@RequestParam("cnpU")String cnpU)  {
-        return userService.forgotPass(cnpU);
+    @GetMapping(path="/all")
+    public ResponseEntity<List<Designer>> getProducts()
+    {
+        System.out.println("Ce");
+        return ResponseEntity.ok(designerService.getDesigners());
     }
 }

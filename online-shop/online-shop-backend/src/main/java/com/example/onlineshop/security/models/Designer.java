@@ -3,36 +3,62 @@ package com.example.onlineshop.security.models;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
-import java.util.*;
+import java.util.Collection;
+
 @Setter
 @Getter
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @RequiredArgsConstructor
-public class User implements UserDetails {
+public class Designer implements UserDetails {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
-    private String password;
-
     @Column(name = "firstName")
-    private String firstName;
+    private String firstNameDesigner;
 
     @Column(name = "lastName")
-    private String lastName;
+    private String lastNameDesigner;
+
+    @Column(name = "passwordDesigner")
+    private String passwordDesigner;
+
+    @Column(name = "phoneDesigner")
+    private String phoneDesigner;
+
+    @Column(name = "facebookDesigner")
+    private String facebookDesigner;
+
+    @Column(name = "linkedinDesigner")
+    private String linkedinDesigner;
+
+    @Column(name = "experienceDesigner")
+    private Integer experienceDesigner;
+
+    @Column(name = "detailDesigner")
+    private String detailDesigner;
+
+    @Column(name = "imageDesigner")
+    private String imageDesigner;
+
+    @Column(name = "role")
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return getPasswordDesigner() ;
     }
 
     @Override

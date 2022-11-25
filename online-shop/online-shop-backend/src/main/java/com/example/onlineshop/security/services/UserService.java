@@ -1,6 +1,7 @@
 package com.example.onlineshop.security.services;
 
 import com.example.onlineshop.security.models.User;
+import com.example.onlineshop.security.repositories.DesignerRepository;
 import com.example.onlineshop.security.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,21 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
 
+    @Autowired
+    private DesignerRepository designerRepository;
+
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        UserDetails user = userRepository.findByEmailUser(email);
+        System.out.println("++"+email);
+        UserDetails user = userRepository.findByEmail(email);
+        System.out.println("=>"+ user);
 
+        if(user == null) {
+            user = designerRepository.findByEmail((email));
+        }
         if(user == null){
             throw new UsernameNotFoundException(
                     String.format("username with %s email not found", email));
@@ -37,11 +46,11 @@ public class UserService implements UserDetailsService {
         return user;
     }
     public User loginUser(String email, String password){
-        if (!userRepository.existsByEmailUser(email)) {
+        if (!userRepository.existsByEmail(email)) {
             throw new IllegalStateException("Cnp doesnt exist");
         }
 
-        User userProfile = userRepository.findByEmailUser(email);
+        User userProfile = userRepository.findByEmail(email);
         String pass = userProfile.getPassword();
         if (!bCryptPasswordEncoder.matches(password, pass)) {
             throw new IllegalStateException("Cnp doesnt exist");
@@ -53,7 +62,7 @@ public class UserService implements UserDetailsService {
 
     public User registerUser(User user) throws Exception {
         //verificam daca un user cu email-ul respectiv se gaseste deja
-        Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmailUser(user.getEmailUser()));
+        Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
         if (userOptional.isPresent()) {
             throw new IOException("Exista userul deja");
         }
@@ -66,8 +75,8 @@ public class UserService implements UserDetailsService {
     };
     public User changePassword(String oldPass, String newPass, String cnpC) throws Exception {
         String username;
-        username = userRepository.findByEmailUser(cnpC).getEmailUser();
-        User currentUser = this.userRepository.findByEmailUser(username);
+        username = userRepository.findByEmail(cnpC).getEmail();
+        User currentUser = this.userRepository.findByEmail(username);
         if(this.bCryptPasswordEncoder.matches(oldPass, currentUser.getPassword()))
         {
             if(oldPass.equals(newPass))
@@ -90,7 +99,7 @@ public class UserService implements UserDetailsService {
         return currentUser;
     }
     public User forgotPass(String email) {
-        User currentUser = userRepository.findByEmailUser(email);
+        User currentUser = userRepository.findByEmail(email);
         if(currentUser == null)
             return null;
         System.out.println(currentUser);
