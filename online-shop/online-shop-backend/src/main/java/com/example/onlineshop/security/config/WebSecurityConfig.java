@@ -35,8 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/register",
-                        "/login", "/registerDesigner",
-                        "/loginDesigner","/all",
+                        "/login", "/designer/registerDesigner",
+                        "/designer/loginDesigner","/designer/all",
                         "/product/all","/product/save","/product/oneProduct/{id}").permitAll().anyRequest().authenticated()
                 .and().cors().and().csrf().disable()
                 .exceptionHandling()

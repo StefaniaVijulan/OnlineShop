@@ -5,6 +5,7 @@ import {ProductsTabComponent} from "./pages/products-tab/products-tab.component"
 import {ProductDetailsComponent} from "./pages/products-tab/product-details/product-details.component";
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {DesignersTabComponent} from "./pages/designers-tab/designers-tab.component";
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'designers',
+    component: DesignersTabComponent
   },
 ];
 
