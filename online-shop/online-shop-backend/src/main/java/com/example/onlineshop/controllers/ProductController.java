@@ -26,7 +26,6 @@ public class ProductController {
     @PostMapping("/save")
     public ResponseEntity<Product> addProduct(@RequestBody Product product)
     {
-
         return ResponseEntity.ok(productService.addProduct(product));
     }
 
@@ -34,6 +33,12 @@ public class ProductController {
     public ResponseEntity<Optional<Product>> getProduct(@PathVariable Long id)
     {
         return ResponseEntity.ok(productService.getProduct(id));
+    }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public void deleteProduct(@PathVariable Long id)
+    {
+        productService.deleteProduct(id);
     }
 
 }

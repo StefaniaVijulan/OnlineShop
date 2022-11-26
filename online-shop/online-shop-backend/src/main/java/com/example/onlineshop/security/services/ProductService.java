@@ -4,6 +4,7 @@ import com.example.onlineshop.security.models.Product;
 import com.example.onlineshop.security.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -38,4 +39,13 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    public void deleteProduct(Long id)
+    {
+        Optional<Product> productFound = productRepository.findById(id);
+        if(productFound.isPresent())
+        {
+            System.out.println(productFound.get());
+            productRepository.delete(productFound.get());
+        }
+    }
 }
