@@ -4,12 +4,12 @@
 </div>
 
 <div class="row product-list-general">
-  <div *ngFor="let product of productsList | searchFilter:searchText" class="col-md-4 col-sm-6 col-12">
+  <div *ngFor="let product of productsList | searchFilter:searchText" class="col-md-3 col-sm-6 col-12">
     <div class="card product-card-list">
       <div class="card-body product-body">
         <h5 class="card-title">{{product.productName}}</h5>
         <p class="card-text">{{product.description}}</p>
-        <a (click)="goToProductShow(product.idProduct)" class="btn button-details">Vezi detalii</a>
+        <a (click)="goToProductShow(product.id)" class="btn button-details">Vezi detalii</a>
       </div>
       <div class="card-footer product-price">{{product.price}} lei</div>
     </div>

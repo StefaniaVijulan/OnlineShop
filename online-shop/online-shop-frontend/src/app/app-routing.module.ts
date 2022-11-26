@@ -16,7 +16,7 @@ const routes: Routes = [
     component: ProductsTabComponent
   },
   {
-    path: 'productDetails',
+    path: 'productDetails/:productId',
     component: ProductDetailsComponent
   },
   {

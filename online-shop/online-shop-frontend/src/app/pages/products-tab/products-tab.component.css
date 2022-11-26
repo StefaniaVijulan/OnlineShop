@@ -1,11 +1,11 @@
 .product-card-list{
-  height: 250px;
-  margin: 5%;
+  height: 260px;
+  margin-top: 40px;
   background-color: rgba(56,163,165,0.1);
 }
 
 .product-list-general{
-  margin: 10px 5% 5%;
+  margin: 20px 5% 5%;
 }
 
 .button-details{
@@ -25,6 +25,8 @@
 .product-body .card-title{
   text-decoration: underline #22577a;
   color:#074f57;
+  font-size: medium;
+  font-weight: bolder;
 }
 
 .product-body .card-text{
