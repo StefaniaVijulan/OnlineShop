@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './models/user';
 import {LoginService} from "./services/login.service";
 
 @Component({
@@ -8,13 +9,25 @@ import {LoginService} from "./services/login.service";
 })
 export class AppComponent {
   title = 'online-shop-frontend';
-
+  display='none';
+  user = new User();
+  
   constructor(public _loginService: LoginService){
 
   }
-
-  public signOut(){
-    //aici o sa vina stergerea din local storage a utilizatorului
+  ngOnInit(){
+    if(localStorage.getItem('type')=="user"){}
   }
 
+  public signOut(){
+    this._loginService.logoutUser()
+  }
+
+  openModal(){
+          this.display='block';
+       }
+  onCloseHandled(){
+            this.display='none';
+         }
+    
 }

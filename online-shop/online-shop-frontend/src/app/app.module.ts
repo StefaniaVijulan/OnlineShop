@@ -7,7 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AboutComponent } from './pages/about/about.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductsTabComponent } from './pages/products-tab/products-tab.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
@@ -26,6 +26,7 @@ import { RegisterComponent } from './pages/register/register.component';
     ProductDetailsComponent,
     LoginComponent,
     RegisterComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,8 @@ import { RegisterComponent } from './pages/register/register.component';
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
 
   providers: [],

@@ -8,15 +8,30 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="/register" routerLinkActive="active">Autentificare</a>
-      <a class ="nav-link" *ngIf = "!_loginService.checkUserIsLogged()" routerLink="/login" routerLinkActive="active">Înregistrare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.loggedIn()" routerLink="/register" routerLinkActive="active">Autentificare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.loggedIn()" routerLink="/login" routerLinkActive="active">Înregistrare</a>
+      
 
-      <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" routerLink="#" routerLinkActive="active">Editează contul</a>
-      <a class ="nav-link" *ngIf = "_loginService.checkUserIsLogged()" (click)="signOut()">Ieși din cont</a>
+      <a  class ="nav-link" *ngIf = "_loginService.loggedIn()" (click)='openModal()'>Editează contul</a>
+      <a class ="nav-link" *ngIf = "_loginService.loggedIn()" (click)="signOut()">Ieși din cont</a>
     </ul>
   </div>
 </nav>
-
-
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h2 class="modal-title" style="margin: 0 auto;">Editare profil</h2>
+     </div>
+     <div class="modal-body">
+       <p><b>Email: </b></p>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+     </div>
+   </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
 <router-outlet></router-outlet>
 
