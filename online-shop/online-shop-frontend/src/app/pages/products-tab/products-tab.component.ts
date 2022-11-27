@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../../models/product";
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../../services/product.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-products-tab',
