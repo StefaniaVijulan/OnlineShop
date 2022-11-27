@@ -47,13 +47,13 @@ public class UserService implements UserDetailsService {
     }
     public User loginUser(String email, String password){
         if (!userRepository.existsByEmail(email)) {
-            throw new IllegalStateException("Cnp doesnt exist");
+            throw new IllegalStateException("User don't exist");
         }
 
         User userProfile = userRepository.findByEmail(email);
         String pass = userProfile.getPassword();
         if (!bCryptPasswordEncoder.matches(password, pass)) {
-            throw new IllegalStateException("Cnp doesnt exist");
+            throw new IllegalStateException("Passwords doesn't match");
 
         }
         System.out.println(userProfile);

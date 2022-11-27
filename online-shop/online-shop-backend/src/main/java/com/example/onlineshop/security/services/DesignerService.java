@@ -30,13 +30,13 @@ public class DesignerService{
 
     public Designer loginDesigner(String emailDesigner, String password){
         if (!designerRepository.existsByEmail(emailDesigner)) {
-            throw new IllegalStateException("Acest email nu exista!");
+            throw new IllegalStateException("User don't exist!");
         }
 
         Designer designer = designerRepository.findByEmail(emailDesigner);
         String pass = designer.getPassword();
         if (!bCryptPasswordEncoder.matches(password, pass)) {
-            throw new IllegalStateException("Cnp doesnt exist");
+            throw new IllegalStateException("Passwords doesn't match");
 
         }
         System.out.println(designer);
@@ -58,15 +58,12 @@ public class DesignerService{
     }
 
     public List<Designer> getDesigners() {
-        System.out.println("Cine");
         List<Designer> designers = new ArrayList<>();
         for (int i = 0; i < designerRepository.findAll().size(); i++) {
             {
                 designers.add(designerRepository.findAll().get(i));
             }
         }
-        System.out.println("here");
-        System.out.println(designers);
         return designers;
     }
 }

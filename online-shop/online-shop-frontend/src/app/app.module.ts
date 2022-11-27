@@ -15,6 +15,7 @@ import {SearchPipe} from "./services/search.pipe";
 import { ProductDetailsComponent } from './pages/products-tab/product-details/product-details.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { DesignersTabComponent } from './pages/designers-tab/designers-tab.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { RegisterComponent } from './pages/register/register.component';
     SearchPipe,
     ProductDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DesignersTabComponent
     
   ],
   imports: [

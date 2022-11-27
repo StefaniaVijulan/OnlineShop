@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value="/designer")
 @RequiredArgsConstructor
 public class DesignerController {
 
@@ -63,7 +64,6 @@ public class DesignerController {
     @GetMapping(path="/all")
     public ResponseEntity<List<Designer>> getProducts()
     {
-        System.out.println("Ce");
         return ResponseEntity.ok(designerService.getDesigners());
     }
 }

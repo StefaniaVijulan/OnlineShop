@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Product} from "../../../models/product";
+import {ProductService} from "../../../services/product.service";
 
 @Component({
   selector: 'app-product-details',
@@ -12,20 +13,21 @@ export class ProductDetailsComponent implements OnInit {
   idProduct: number = 0;
   currentProduct: Product = new Product();
 
-  constructor(private _router:Router, private _route: ActivatedRoute) { }
+  constructor(private _router:Router, private _route: ActivatedRoute, private _productService: ProductService) { }
 
   ngOnInit(): void {
-    this._route.queryParams.subscribe(params => {
-      this.idProduct = JSON.parse(params["productId"]);
-    });
-
+    this.idProduct = Number(this._route.snapshot.url.toString().replace('productDetails,',''));
+    console.log(this.idProduct)
     this.getCurrentProduct();
 
   }
 
   getCurrentProduct(){
-    //o sa trebuiasca modificat
-    this.currentProduct = { idProduct: this.idProduct, sketching: "",finalProduct: "", productName:"Sacou office",price:600,description:"Sacou de culoare neagră, potrivit pentru o zi la birou. Materialul este unul subțire și lejer."}
-  }
+    return this._productService.getProductById(this.idProduct)
+      .subscribe((res: Product) => {
+        this.currentProduct = res;
+        console.log(this.currentProduct)
 
+      })
+  }
 }
