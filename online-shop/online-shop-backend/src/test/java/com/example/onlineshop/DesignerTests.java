@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ContextConfiguration
 public class DesignerTests {
 
-    private Designer mockDesigner;
+    private Designer mockDesigner = new Designer();
 
     @Autowired
     private DesignerService designerService;
@@ -52,7 +52,7 @@ public class DesignerTests {
     public void register_login() throws Exception {
         designerService.addDesigner(mockDesigner);
 
-        designerService.loginDesigner(email, "password");
+        designerService.loginDesigner(email, "parola");
     }
 
     @Test
@@ -60,9 +60,9 @@ public class DesignerTests {
         designerService.addDesigner(mockDesigner);
 
         try {
-            designerService.loginDesigner("fakeEmail", "password");
+            designerService.loginDesigner("fakeEmail", "parola");
         } catch (IllegalStateException e){
-            assert e.getMessage().equals("Acest email nu exista!");
+            assert e.getMessage().equals("User don't exist!");
         }
     }
 }

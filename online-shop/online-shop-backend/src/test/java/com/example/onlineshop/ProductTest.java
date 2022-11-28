@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ContextConfiguration
 public class ProductTest {
 
-    private Product mockProduct;
+    private Product mockProduct = new Product();
 
     @Autowired
     private ProductService productService;
@@ -23,24 +23,25 @@ public class ProductTest {
     @Before
     public void setUp(){
         mockProduct.setProductName("test");
-        mockProduct.setId(121L);
         mockProduct.setPrice(100);
     }
 
     @Test
     public void add(){
-        productService.addProduct(mockProduct);
+        Product addedProduct = productService.addProduct(mockProduct);
 
-        assert productService.getProduct(121L).isPresent();
+        assert productService.getProduct(addedProduct.getId()).isPresent();
     }
 
     @Test
     public void add_delete(){
+        Product addedProduct = productService.addProduct(mockProduct);
+
         productService.addProduct(mockProduct);
 
-        productService.deleteProduct(121L);
+        productService.deleteProduct(addedProduct.getId());
 
-        assert productService.getProduct(121L).isEmpty();
+        assert productService.getProduct(addedProduct.getId()).isEmpty();
     }
 
 }

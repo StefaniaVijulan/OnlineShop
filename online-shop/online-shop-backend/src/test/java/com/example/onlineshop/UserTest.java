@@ -10,15 +10,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.awt.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration
 public class UserTest {
 
-    private User mockUser;
+    private User mockUser = new User();
 
     @Autowired
     private UserService userService;
@@ -29,9 +32,14 @@ public class UserTest {
 
     private String password = "password";
 
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+    public UserTest() {
+    }
+
     @Before
     public void setUp() {
-        mockUser.setEmail(email);
         mockUser.setFirstName(firstName);
         mockUser.setLastName(lastName);
         mockUser.setPassword(password);
@@ -39,6 +47,7 @@ public class UserTest {
 
     @Test
     public void register() throws Exception {
+        mockUser.setEmail("register@gmail.com");
         userService.registerUser(mockUser);
 
        UserDetails user = userService.loadUserByUsername(mockUser.getUsername());
@@ -48,6 +57,11 @@ public class UserTest {
 
     @Test
     public void register_login() throws Exception {
+
+        email = "register_login@gmail.com";
+
+        mockUser.setEmail(email);
+
         userService.registerUser(mockUser);
 
         userService.loginUser(email, password);
@@ -55,30 +69,41 @@ public class UserTest {
 
     @Test
     public void register_loginFail() throws Exception {
+        email = "register_loginFail@gmail.com";
+
+        mockUser.setEmail(email);
+
         userService.registerUser(mockUser);
 
         try {
             userService.loginUser(email, password);
         } catch (IllegalStateException e){
-            assert e.getMessage().equals("Acest email nu exista!");
+            assert e.getMessage().equals("User don't exist");
         }
     }
 
     @Test
     public void changePassword() throws Exception {
+        email = "changePassword@gmail.com";
+
+        mockUser.setEmail(email);
+
         userService.registerUser(mockUser);
 
-       userService.changePassword(password, "password2", mockUser.getUsername());
+        User user = userService.changePassword(password, "password2", mockUser.getUsername());
 
-       assert mockUser.getPassword().equals("password2");
+        assert bCryptPasswordEncoder.matches("password2", user.getPassword());
     }
 
     @Test
     public void forgotPassword() throws Exception {
+        email = "forgotPassword@gmail.com";
+        mockUser.setEmail(email);
+
         userService.registerUser(mockUser);
 
-        userService.forgotPass(mockUser.getEmail());
+        User user = userService.forgotPass(mockUser.getEmail());
 
-        assert mockUser.getPassword().equals("password2");
+        assert bCryptPasswordEncoder.matches("parola2", user.getPassword());
     }
 }
