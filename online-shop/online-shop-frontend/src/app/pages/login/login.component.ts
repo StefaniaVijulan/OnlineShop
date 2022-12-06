@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       error => {
         console.log("Exception has occured");
         this.message="Wrong email or password, please Retry!";
-    }     
+    }
     )
   }
 

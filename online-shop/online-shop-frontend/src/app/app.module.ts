@@ -16,6 +16,7 @@ import { ProductDetailsComponent } from './pages/products-tab/product-details/pr
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DesignersTabComponent } from './pages/designers-tab/designers-tab.component';
+import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DesignersTabComponent } from './pages/designers-tab/designers-tab.compo
     ProductDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    DesignersTabComponent
+    DesignersTabComponent,
+    ShopCartComponent
     
   ],
   imports: [

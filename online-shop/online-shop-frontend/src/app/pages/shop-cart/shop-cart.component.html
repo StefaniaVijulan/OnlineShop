@@ -1,0 +1,15 @@
+<h2 class="page_title">COȘ DE CUMPĂRĂTURI</h2>
+
+<div class="product_shop" *ngFor="let shopCart of productsInShopCart">
+  <p> {{shopCart.product.productName}}</p>
+  <p> {{shopCart.product.price}}</p>
+  <p class="update_quantity" (click)="updateQuantity(shopCart, -1)" *ngIf="shopCart.quantity > 1">-</p>
+  <p> {{shopCart.quantity}} </p>
+  <p class="update_quantity" (click)="updateQuantity(shopCart, 1)">+</p>
+  <p (click)="deleteProductInCart(shopCart)">X</p>
+</div>
+
+<div>
+  <p>Total price: {{totalPrice}}</p>
+  <p>Plasează comanda</p>
+</div>

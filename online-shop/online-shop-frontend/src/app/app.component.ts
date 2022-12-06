@@ -11,12 +11,15 @@ export class AppComponent {
   title = 'online-shop-frontend';
   display='none';
   user = new User();
-  
+  isClient: boolean = false;
+
   constructor(public _loginService: LoginService){
 
   }
   ngOnInit(){
-    if(localStorage.getItem('type')=="user"){}
+    if(localStorage.getItem('type')=="user"){
+      this.isClient = true;
+    }
   }
 
   public signOut(){
@@ -29,5 +32,5 @@ export class AppComponent {
   onCloseHandled(){
             this.display='none';
          }
-    
+
 }

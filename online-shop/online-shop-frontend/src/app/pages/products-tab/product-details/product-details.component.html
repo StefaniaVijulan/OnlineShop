@@ -8,5 +8,6 @@
   </span>
     <p class="product-price">{{currentProduct.price}} lei</p>
   </div>
-
 </div>
+<button class="add-to-card-button" *ngIf="userType == 'user'" [disabled]="addedToCart === true" (click)="addToCart()"> {{addedToCart === false ? 'Adaugă în coș' : 'Deja în coș'}}</button>
+
