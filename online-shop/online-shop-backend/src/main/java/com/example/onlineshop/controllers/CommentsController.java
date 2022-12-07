@@ -36,10 +36,10 @@ public class CommentsController {
         return ResponseEntity.ok(commentsService.updateComments(comments,newComment));
     }
 
-    @DeleteMapping("/deleteComment/{clientId}")
-    public void deleteComment(@PathVariable Long clientId)
+    @DeleteMapping("/deleteComment/{commentId}")
+    public void deleteComment(@PathVariable Long commentId)
     {
-        commentsService.deleteComments(clientId);
+        commentsService.deleteComments(commentId);
     }
 
 }

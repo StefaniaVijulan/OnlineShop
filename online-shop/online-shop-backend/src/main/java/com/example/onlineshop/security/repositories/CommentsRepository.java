@@ -15,6 +15,6 @@ public interface CommentsRepository extends JpaRepository<Comments, Long> {
     @Query("SELECT com FROM Comments com WHERE com.client.id = :clientId")
     Optional<Comments> findCommentsByClientId(Long clientId);
 
-    @Query("SELECT com FROM Comments com WHERE com.product.id = :productId")
+    @Query("SELECT com FROM Comments com WHERE com.product.id = :productId ORDER BY com.date")
     List<Comments> findCommentsByProduct_Id(Long productId);
 }

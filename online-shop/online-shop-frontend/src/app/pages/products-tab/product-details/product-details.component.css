@@ -28,6 +28,7 @@
   font-size: 25px;
 }
 
+
 .product-description-text{
   font-weight: bolder;
   font-size: 18px;
@@ -62,4 +63,89 @@
   color:white;
   padding: 5px;
   font-size: 15px;
+}
+.all-ratings{
+  padding-bottom: 20px;
+}
+.add-rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 5px 15% 20px;
+  padding-bottom: 10px;
+}
+
+.edit-rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.add-rating form, .edit-rating form{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#commentText, #editText{
+  width: 80%;
+}
+
+.button_class{
+  width: 19%;
+  background-color: #38a3a5;
+  color:black;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+}
+
+.edit-button{
+  background-color: #22577a;
+  color:white;
+  border: 2px solid #074f57;
+}
+
+.rating-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 70%;
+  margin: 5px 15%;
+}
+
+.rating-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 1px groove grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.rating-info{
+  width: 70%;
+}
+
+.com-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3%;
+}
+
+.com-description{
+  text-align: justify;
+  font-size: 15px;
+}
+
+.com-subdescription{
+  text-align: justify;
+  font-size: 12px;
+  font-style: italic;
 }

@@ -43,7 +43,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/shopCart/allProducts/{clientId}", "/shopCart/deleteProductInCart/{id}",
                         "/shopCart/updateQuantity/{newQuantity}",
                         "/shopCart/checkIfProductIsSaved/{productId}/{clientId}",
-                        "/shopCart/savedProducts/{clientId}").permitAll().anyRequest().authenticated()
+                        "/shopCart/savedProducts/{clientId}","/comments/addComments",
+                        "/comments/getAllComments/{productId}","/comments/updateComment/{newComment}",
+                        "/comments/deleteComment/{commentId}").permitAll().anyRequest().authenticated()
                 .and().cors().and().csrf().disable()
                 .exceptionHandling()
                 .and().sessionManagement()

@@ -13,3 +13,32 @@
   <button class="add-to-card-button" *ngIf="userType == 'user'" (click)="saveOrDeleteProductFromSaves()"> {{productSaved === false ? 'Adaugă produsul în salvate' : 'Elimină produsul din salvate'}}</button>
   <button class="add-to-card-button" *ngIf="userType == 'user'" [disabled]="addedToCart === true" (click)="addToCart()"> {{addedToCart === false ? 'Adaugă în coș' : 'Deja în coș'}}</button>
 </div>
+
+<div class="add-rating" *ngIf="userType == 'user'">
+  <form #addCommentForm = "ngForm"  (ngSubmit)="addComment(addCommentForm)">
+    <textarea id="commentText" name="commentText" placeholder="Scrie comentariul..." cols="30" rows="3" ngModel></textarea>
+    <button type="submit" class="button_class" [disabled]="editCommentBool == true">Adaugă comentariul</button>
+  </form>
+</div>
+
+<div class="all-ratings">
+  <div class="rating-container" *ngFor="let com of commentsList">
+    <div class="rating-content" *ngIf="editCommentId != com.id">
+      <div class="rating-info">
+      <p class="com-description">{{com.description}}</p>
+      <p class="com-subdescription">Comentariu lăsat de {{com.client.firstName}} {{com.client.lastName}} pe {{com.date| date:'yyyy-MM-dd'}}</p>
+      </div>
+      <div class="com-actions" *ngIf="loggedUser.id == com.client.id && editCommentBool == false">
+        <button class="edit-button" (click)="editComment(com)"> Editează </button>
+        <button class="edit-button" (click)="deleteComment(com)"> Șterge </button>
+      </div>
+    </div>
+
+    <div class="edit-rating" *ngIf="loggedUser.id == com.client.id && editCommentBool == true && editCommentId == com.id">
+      <form #editCommentForm = "ngForm"  (ngSubmit)="submitEditComment(editCommentForm, com)">
+        <textarea id="editText" name="editText" [(ngModel)]="editCommentText" cols="30" rows="3"></textarea>
+        <button type="submit" class="button_class">Editează comentariul</button>
+      </form>
+    </div>
+  </div>
+</div>

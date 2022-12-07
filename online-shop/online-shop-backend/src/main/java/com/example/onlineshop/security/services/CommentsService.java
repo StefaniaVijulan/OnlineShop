@@ -1,6 +1,7 @@
 package com.example.onlineshop.security.services;
 
 import com.example.onlineshop.security.models.Comments;
+import com.example.onlineshop.security.models.Product;
 import com.example.onlineshop.security.models.ShopCart;
 import com.example.onlineshop.security.repositories.CommentsRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class CommentsService {
 
     public Comments updateComments(Comments comments, String newComments)
     {
-        Optional<Comments> commentsFound = commentsRepository.findCommentsByClientId(comments.getId());
+        Optional<Comments> commentsFound = commentsRepository.findById(comments.getId());
         if(commentsFound.isPresent())
         {
             comments.setDescription(newComments);
@@ -43,13 +44,10 @@ public class CommentsService {
         }
     }
 
-    public void deleteComments(Long clintId)
+    public void deleteComments(Long commentId)
     {
-        Optional<Comments> commentsFound = commentsRepository.findCommentsByClientId(clintId);
-        if(commentsFound.isPresent())
-        {
-            commentsRepository.delete(commentsFound.get());
-        }
+        Optional<Comments> commentsOptional = commentsRepository.findById(commentId);
+        commentsOptional.ifPresent(comments -> commentsRepository.delete(comments));
     }
 
 }
