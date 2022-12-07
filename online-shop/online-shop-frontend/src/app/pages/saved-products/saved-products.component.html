@@ -1,0 +1,21 @@
+<h2 class="page_title">PRODUSE SALVATE</h2>
+
+<div class="empty-cart" *ngIf="productsSaved.length == 0">
+  <img src="assets/images/EmptySavedProducts.png" class="empty-cart-photo"  alt="Empty saved products"/>
+  <p class="empty-cart-text"> Nu a fost salvat niciun produs. Vezi produsele disponibile <a routerLink="/products" routerLinkActive="active">aici</a>! </p>
+</div>
+
+
+<div class="row product-list-general">
+    <div *ngFor="let shopCartProduct of productsSaved" class="col-md-4 col-sm-6 col-12">
+      <div class="card product-card-list">
+        <div class="card-body product-body">
+          <h5 class="card-title">{{shopCartProduct.product.productName}}</h5>
+          <p class="card-text">{{shopCartProduct.product.description}}</p>
+          <a (click)="goToProductShow(shopCartProduct.product.id)" class="btn button-details">Vezi detalii</a>
+        </div>
+        <div class="card-footer product-price">{{shopCartProduct.product.price}} lei</div>
+      </div>
+    </div>
+  </div>
+

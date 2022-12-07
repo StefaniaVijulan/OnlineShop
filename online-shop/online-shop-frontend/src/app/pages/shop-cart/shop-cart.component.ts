@@ -48,4 +48,8 @@ export class ShopCartComponent implements OnInit {
       this.totalPrice += this.productsInShopCart[i].product.price * this.productsInShopCart[i].quantity;
     }
   }
+
+  goToProductShow(productId:number){
+    this._router.navigate(["/productDetails/" + productId]);
+  }
 }

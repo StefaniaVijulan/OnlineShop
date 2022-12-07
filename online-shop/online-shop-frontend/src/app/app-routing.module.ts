@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {DesignersTabComponent} from "./pages/designers-tab/designers-tab.component";
 import {ShopCartComponent} from "./pages/shop-cart/shop-cart.component";
+import {SavedProductsComponent} from "./pages/saved-products/saved-products.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'shopCart',
     component: ShopCartComponent
+  },
+  {
+    path: 'savedProducts',
+    component: SavedProductsComponent
   },
 ];
 

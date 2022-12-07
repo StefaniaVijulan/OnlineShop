@@ -1,6 +1,6 @@
 export class Product {
 
-  idProduct: number = 0;
+  id: number = 0;
   sketching:string ='';
   finalProduct:string ='';
   productName:string ='';

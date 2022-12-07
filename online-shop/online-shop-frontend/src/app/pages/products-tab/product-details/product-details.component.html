@@ -9,5 +9,7 @@
     <p class="product-price">{{currentProduct.price}} lei</p>
   </div>
 </div>
-<button class="add-to-card-button" *ngIf="userType == 'user'" [disabled]="addedToCart === true" (click)="addToCart()"> {{addedToCart === false ? 'Adaugă în coș' : 'Deja în coș'}}</button>
-
+<div class="product-buttons">
+  <button class="add-to-card-button" *ngIf="userType == 'user'" (click)="saveOrDeleteProductFromSaves()"> {{productSaved === false ? 'Adaugă produsul în salvate' : 'Elimină produsul din salvate'}}</button>
+  <button class="add-to-card-button" *ngIf="userType == 'user'" [disabled]="addedToCart === true" (click)="addToCart()"> {{addedToCart === false ? 'Adaugă în coș' : 'Deja în coș'}}</button>
+</div>

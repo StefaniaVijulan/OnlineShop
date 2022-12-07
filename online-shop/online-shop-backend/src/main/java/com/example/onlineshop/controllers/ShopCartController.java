@@ -25,10 +25,17 @@ public class ShopCartController {
     }
 
     @GetMapping("/allProducts/{clientId}")
-    public ResponseEntity<List<ShopCart>> addProductInCart(@PathVariable Long clientId)
+    public ResponseEntity<List<ShopCart>> getAllProductsInShopCart(@PathVariable Long clientId)
     {
         return ResponseEntity.ok(shopCartService.getAllProductsInShopCart(clientId));
     }
+
+    @GetMapping("/savedProducts/{clientId}")
+    public ResponseEntity<List<ShopCart>> getAllProductsSaved(@PathVariable Long clientId)
+    {
+        return ResponseEntity.ok(shopCartService.getAllProductsSaved(clientId));
+    }
+
 
     @PatchMapping("/updateQuantity/{newQuantity}")
     public ResponseEntity<ShopCart> updateQuantity(@RequestBody ShopCart shopCart,@PathVariable Integer newQuantity)
@@ -42,6 +49,11 @@ public class ShopCartController {
         return ResponseEntity.ok(shopCartService.checkProductInShopCart(productId, clientId));
     }
 
+    @GetMapping("/checkIfProductIsSaved/{productId}/{clientId}")
+    public ResponseEntity<ShopCart> checkIfProductIsSaved(@PathVariable Long productId, @PathVariable Long clientId)
+    {
+        return ResponseEntity.ok(shopCartService.checkIfProductIsSaved(productId, clientId));
+    }
 
     @DeleteMapping("/deleteProductInCart/{id}")
     public void deleteProductInCart(@PathVariable Long id)

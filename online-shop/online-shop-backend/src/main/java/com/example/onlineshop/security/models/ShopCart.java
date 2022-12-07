@@ -16,10 +16,10 @@ public class ShopCart {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Product product;
 
-    @OneToOne
+    @ManyToOne
     private User client;
 
     @Column(name = "savedProduct")

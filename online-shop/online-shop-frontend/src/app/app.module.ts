@@ -17,6 +17,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DesignersTabComponent } from './pages/designers-tab/designers-tab.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
+import { SavedProductsComponent } from './pages/saved-products/saved-products.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
     LoginComponent,
     RegisterComponent,
     DesignersTabComponent,
-    ShopCartComponent
+    ShopCartComponent,
+    SavedProductsComponent
     
   ],
   imports: [

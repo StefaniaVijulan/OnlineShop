@@ -29,10 +29,20 @@ public class ShopCartService {
     public List<ShopCart> getAllProductsInShopCart(Long clientId){
         return shopCartRepository.findShopCartByClient_Id(clientId);
     }
+
+    public List<ShopCart> getAllProductsSaved(Long clientId){
+        return shopCartRepository.findSavedProductByClient_Id(clientId);
+    }
     public Boolean checkProductInShopCart(Long productId, Long clientId)
     {
         Optional<ShopCart> shopCartOptional = shopCartRepository.findShopCartByProductIdAndClientId(productId, clientId);
         return shopCartOptional.isPresent();
+    }
+
+    public ShopCart checkIfProductIsSaved(Long productId, Long clientId)
+    {
+        Optional<ShopCart> shopCartOptional = shopCartRepository.findSavedProductByProductIdAndClientId(productId, clientId);
+        return shopCartOptional.orElse(null);
     }
 
     public ShopCart updateQuantity(ShopCart shopCart, Integer newQuantity){
@@ -49,6 +59,8 @@ public class ShopCartService {
     {
         Optional<ShopCart> shopCartOptional = shopCartRepository.findById(id);
         shopCartOptional.ifPresent(shopCart -> shopCartRepository.delete(shopCart));
+        System.out.println(id);
+        System.out.println(shopCartRepository.findById(id));
     }
 
 }

@@ -50,3 +50,16 @@
   font-weight: bolder;
   text-align: end;
 }
+
+.product-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 15%;
+}
+
+.add-to-card-button{
+  background-color: #074f57;
+  color:white;
+  padding: 5px;
+  font-size: 15px;
+}

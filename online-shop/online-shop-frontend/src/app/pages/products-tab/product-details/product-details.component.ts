@@ -4,6 +4,7 @@ import {Product} from "../../../models/product";
 import {ProductService} from "../../../services/product.service";
 import {ShopCartService} from "../../../services/shopCart.service";
 import {User} from "../../../models/user";
+import {ShopCart} from "../../../models/shopCart";
 
 @Component({
   selector: 'app-product-details',
@@ -19,6 +20,8 @@ export class ProductDetailsComponent implements OnInit {
   userTypeStorage = localStorage.getItem('type');
   userType: String = '';
   loggedUser: User = new User();
+  productSaved: boolean = false;
+  shopCartSaved: ShopCart = new ShopCart();
 
   constructor(private _router:Router, private _route: ActivatedRoute, private _productService: ProductService,
               private _shopCartService: ShopCartService) { }
@@ -42,12 +45,34 @@ export class ProductDetailsComponent implements OnInit {
           this._shopCartService.checkProductInShopCart(this.idProduct, this.loggedUser.id).subscribe((resp: boolean) =>
               this.addedToCart = resp
           )
+          this._shopCartService.checkIfProductIsSaved(this.idProduct, this.loggedUser.id).subscribe((resp: ShopCart) => {
+            if (resp == null) {
+                  this.productSaved = false;
+              }
+              else{
+                this.shopCartSaved = resp;
+                this.productSaved = true;
+            }
+            }
+          )
         }
       })
   }
 
   addToCart(){
-    this._shopCartService.addProductToCart(this.currentProduct).subscribe();
+    this._shopCartService.addProductToCart(this.currentProduct, false).subscribe();
     this.addedToCart = true;
+  }
+
+  saveOrDeleteProductFromSaves(){
+    if(!this.productSaved){
+      this._shopCartService.addProductToCart(this.currentProduct, true).subscribe((resp: ShopCart) =>{
+        this.shopCartSaved = resp;
+        this.productSaved = true;
+    })}
+    else{
+      this._shopCartService.deleteProductInCart(this.shopCartSaved.id).subscribe();
+      this.productSaved = false;
+    }
   }
 }
