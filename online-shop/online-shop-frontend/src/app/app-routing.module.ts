@@ -24,11 +24,11 @@ const routes: Routes = [
     component: ProductDetailsComponent
   },
   {
-    path: 'login',
+    path: 'inregistrare',
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: 'autentificare',
     component: RegisterComponent
   },
   {

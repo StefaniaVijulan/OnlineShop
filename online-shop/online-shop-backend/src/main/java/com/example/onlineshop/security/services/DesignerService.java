@@ -29,6 +29,7 @@ public class DesignerService{
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Designer loginDesigner(String emailDesigner, String password){
+        System.out.println("Intra in login designer");
         if (!designerRepository.existsByEmail(emailDesigner)) {
             throw new IllegalStateException("User don't exist!");
         }
@@ -49,8 +50,7 @@ public class DesignerService{
             return null;
 
         }
-        String parola = "parola";
-        designer.setPasswordDesigner(bCryptPasswordEncoder.encode(parola));
+        designer.setPasswordDesigner(bCryptPasswordEncoder.encode(designer.getPasswordDesigner()));
 
         designer.setRole("DESIGNER");
         designerRepository.save(designer);

@@ -1,17 +1,12 @@
-<<<<<<< HEAD
 form{
     height: 250px;
     margin: 5%;
     border: 1px solid rgb(8, 1, 1);
     padding-left:10%;
     padding-right:10%;
-    text-align: center;
     background-color: rgba(56,163,165,0.1);
     height: 100%;
   }
-=======
-
->>>>>>> login_register_user
 .form-class{
     margin: 0 auto; 
     padding-left:30%;

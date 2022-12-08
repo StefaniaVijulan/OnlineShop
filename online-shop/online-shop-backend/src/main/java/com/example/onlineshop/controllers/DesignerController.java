@@ -37,6 +37,8 @@ public class DesignerController {
 
     @PostMapping(path = "/loginDesigner")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
+        System.out.println("Ajunge aici");
+        System.out.println(loginRequest);
         //    excelReadService.ReadDataFromExcel("src/main/resources/excelFile/UserDB.xlsx");
 
         try {
@@ -46,6 +48,7 @@ public class DesignerController {
                             loginRequest.getPassword()));
         }
         catch (Exception e) {
+            System.out.println("Exceptie");
             System.out.println(e);
             return null;
         }

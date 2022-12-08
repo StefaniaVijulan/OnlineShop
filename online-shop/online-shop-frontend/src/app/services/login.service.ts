@@ -27,6 +27,10 @@ export class LoginService {
 
   public loginUser(loginRequest: LoginRequest):Observable<any>{
     return this._http.post<any>(this.baseUrl + "/login", loginRequest)
+  }
+  public loginDesigner(loginRequest: LoginRequest):Observable<any>{
+      console.log(loginRequest)
+      return this._http.post<any>(this.baseUrl + "/designer/loginDesigner", loginRequest)
 }
 
 

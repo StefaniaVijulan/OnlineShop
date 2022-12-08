@@ -18,7 +18,7 @@ export class AppComponent {
 
   }
   ngOnInit(){
-    if(localStorage.getItem('type')=="user"){
+    if(localStorage.getItem('type')=="CLIENT"){
       this.isClient = true;
     }
   }

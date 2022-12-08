@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginRequest = new LoginRequest()
   message = '';
   constructor(private _login: LoginService,private _router: Router) { }
-
+  isChecked: boolean= true;
   ngOnInit(): void {
   }
 
@@ -36,5 +36,27 @@ export class LoginComponent implements OnInit {
     }
     )
   }
-
+  loginDesigner(){
+    console.log(this.loginRequest)
+    this._login.loginDesigner(this.loginRequest).subscribe(
+      data => {
+        console.log("Response was received");
+        console.log(data)
+        if(!data)
+          this.message="Utilizatorul cu aceste date de conectare nu exista!";
+        else{
+        localStorage.setItem('token',  JSON.stringify(data.jwt))
+        localStorage.setItem('user', JSON.stringify(data.user))
+        localStorage.setItem("type", "designer")
+        this._router.navigate(['/']).then(() => {
+          window.location.href = window.location.href;
+        });
+        }
+      },
+      error => {
+        console.log("Exception has occured");
+        this.message="Adresa de email sau parola sunt incorecte! Mai incearca!";
+    }
+    )
+  }
 }
