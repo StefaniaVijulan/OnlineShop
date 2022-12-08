@@ -1,6 +1,5 @@
 package com.example.onlineshop.security.models;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -32,5 +31,8 @@ public class Product {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    private Designer designer;
 
 }
