@@ -59,8 +59,6 @@ public class ShopCartService {
     {
         Optional<ShopCart> shopCartOptional = shopCartRepository.findById(id);
         shopCartOptional.ifPresent(shopCart -> shopCartRepository.delete(shopCart));
-        System.out.println(id);
-        System.out.println(shopCartRepository.findById(id));
     }
 
 }

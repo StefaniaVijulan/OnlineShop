@@ -1,0 +1,29 @@
+<div class="total-container">
+  <h3 class="orders-title">Comenzi</h3>
+
+  <div class="empty-cart" *ngIf="ordersPlaced.length == 0">
+    <img src="assets/images/EmptyCart.png" class="empty-cart-photo"  alt="Empty cart"/>
+    <p class="empty-cart-text"> Nu a fost plasată nicio comandă. Vezi produsele disponibile <a routerLink="/products" routerLinkActive="active">aici</a>! </p>
+  </div>
+
+<div *ngFor="let op of ordersPlaced" class="order-container">
+  <img src="assets/images/ProductPhoto.png"  alt="Product" class="product-img">
+  <div class="order-details">
+    <div class="product-details">
+      <div class="name-price">
+        <p class="product-name" (click)="goToProductShow(op.product.id)">{{op.product.productName}}</p>
+        <p class="product-price">{{op.product.price}} lei X {{op.quantity}}</p>
+      </div>
+      <p class="product-description">{{op.product.description}}</p>
+    </div>
+    <div class="billing-details">
+      <p *ngIf="userType=='user'"><i><u>Produs realizat de:</u></i> {{op.product.designer.firstNameDesigner}} {{op.product.designer.lastNameDesigner}}</p>
+      <p *ngIf="userType=='designer'"><i><u>Produs comandat de:</u></i> {{op.client.firstName}} {{op.client.lastName}}</p>
+      <p><i><u>Data plasării comenzii: </u></i> {{op.orderDate | date:'yyyy-MM-dd'}}</p>
+      <p><i><u>Status comandă: </u></i>  {{op.finalized === false ? 'Nefinalizată' : 'Finalizată'}}</p>
+      <p><i><u>Date de facturare: </u></i>  {{op.billingData.address}}, {{op.billingData.city}}, {{op.billingData.country}}, {{op.billingData.zipcode}}</p>
+      <p (click)="finalizeOrder(op)" *ngIf="userType=='designer' && op.finalized === false" class="btn button-details">Finalizează comanda</p>
+    </div>
+  </div>
+</div>
+</div>

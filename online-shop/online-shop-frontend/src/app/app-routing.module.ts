@@ -9,6 +9,7 @@ import {DesignersTabComponent} from "./pages/designers-tab/designers-tab.compone
 import {ShopCartComponent} from "./pages/shop-cart/shop-cart.component";
 import {SavedProductsComponent} from "./pages/saved-products/saved-products.component";
 import {OrderPageComponent} from "./pages/order-page/order-page.component";
+import {PlacedOrdersComponent} from "./pages/placed-orders/placed-orders.component";
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'order',
     component: OrderPageComponent
+  },
+  {
+    path: 'placedOrders',
+    component: PlacedOrdersComponent
   },
 ];
 
