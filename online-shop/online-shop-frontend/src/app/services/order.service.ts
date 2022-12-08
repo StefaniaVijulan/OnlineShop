@@ -26,6 +26,6 @@ export class OrderService {
   }
 
   public finalizeOrder(orderProduct: OrderProduct, finalized: boolean){
-    return this._http.patch<OrderProduct>(this.baseUrl + '/orderProduct/finalizeOrder/' + finalized, OrderProduct);
+    return this._http.patch<OrderProduct>(this.baseUrl + '/orderProduct/finalizeOrder/' + finalized, orderProduct);
   }
 }

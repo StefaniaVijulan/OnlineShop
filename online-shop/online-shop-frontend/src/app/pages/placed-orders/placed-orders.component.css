@@ -25,6 +25,13 @@
   justify-content: center;
 }
 
+.finalize-button{
+  margin-right: 15px;
+  margin-bottom: 10px;
+  background-color: #074f57;
+  color:white;
+}
+
 .order-container{
   background-color:rgba(56,163,165,0.1);
   width: 85%;

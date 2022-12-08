@@ -46,9 +46,8 @@ export class LoginComponent implements OnInit {
           this.message="Utilizatorul cu aceste date de conectare nu exista!";
         else{
         localStorage.setItem('token',  JSON.stringify(data.jwt))
-        localStorage.setItem('user', JSON.stringify(data.user))
+        localStorage.setItem('user', JSON.stringify(data.designer))
         localStorage.setItem("type", "designer")
-
           this._router.navigate(['/']).then(() => {
           window.location.href = window.location.href;
         });

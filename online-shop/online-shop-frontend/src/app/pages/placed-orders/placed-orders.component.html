@@ -22,7 +22,7 @@
       <p><i><u>Data plasării comenzii: </u></i> {{op.orderDate | date:'yyyy-MM-dd'}}</p>
       <p><i><u>Status comandă: </u></i>  {{op.finalized === false ? 'Nefinalizată' : 'Finalizată'}}</p>
       <p><i><u>Date de facturare: </u></i>  {{op.billingData.address}}, {{op.billingData.city}}, {{op.billingData.country}}, {{op.billingData.zipcode}}</p>
-      <p (click)="finalizeOrder(op)" *ngIf="userType=='designer' && op.finalized === false" class="btn button-details">Finalizează comanda</p>
+      <button class="finalize-button" (click)="finalizeOrder(op)" *ngIf="userType=='designer' && op.finalized === false">Finalizează comanda</button>
     </div>
   </div>
 </div>

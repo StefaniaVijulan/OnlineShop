@@ -28,8 +28,6 @@ export class PlacedOrdersComponent implements OnInit {
     if(this.userTypeStorage){
       this.userType = this.userTypeStorage;
       if(this.loggedUserStorage){
-        console.log(this.loggedUserStorage)
-        console.log(this.userType)
         if(this.userType == 'user'){
           this.loggedUserClient = JSON.parse(this.loggedUserStorage);
         }
@@ -37,7 +35,7 @@ export class PlacedOrdersComponent implements OnInit {
           this.loggedUserDesigner = JSON.parse(this.loggedUserStorage);
         }
       }
-    }console.log("aici");
+    }
     this.getOrdersPlaced();
   }
 
