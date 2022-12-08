@@ -58,6 +58,13 @@ label {
   font-weight: 600;
 }
 
+.done-command{
+  color: darkslategrey;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+}
+
 .place-order-button{
   margin-right: 15px;
   margin-bottom: 10px;

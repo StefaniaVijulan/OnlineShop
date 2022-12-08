@@ -22,6 +22,7 @@ export class OrderPageComponent implements OnInit {
   billingDataObject: BillingData = new BillingData();
   products: ShopCart[] = [];
   totalPrice: number = 0;
+  placedOrderBool:boolean = false;
 
   constructor(private _shopCartService: ShopCartService, private _orderService: OrderService,private _router: Router, private _billingDataService: BillingDataService) { }
 
@@ -69,9 +70,9 @@ export class OrderPageComponent implements OnInit {
       this._orderService.addOrder(transientOrder).subscribe((res:OrderProduct) =>
         this._shopCartService.deleteProductInCart(this.products[i].id).subscribe()
       );
-    alert("Comanda a fost plasată");
-    this._router.navigate(["/placedOrders"]);
-  }
+      this.placedOrderBool=true;
+      setTimeout(() =>  this._router.navigate(["/placedOrders"]), 1100)
+    }
   }
 
   getProductsFromOrder(){

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderProduct} from "../../models/orderProduct";
 import {HttpClient} from "@angular/common/http";
-import {NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {Router, RoutesRecognized} from "@angular/router";
 import {OrderService} from "../../services/order.service";
 import {User} from "../../models/user";
-import {ShopCart} from "../../models/shopCart";
 import {Designer} from "../../models/designer";
-import {Comments} from "../../models/comments";
+import {filter, pairwise} from "rxjs";
 
 @Component({
   selector: 'app-placed-orders',
