@@ -18,6 +18,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DesignersTabComponent } from './pages/designers-tab/designers-tab.component';
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { SavedProductsComponent } from './pages/saved-products/saved-products.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { SavedProductsComponent } from './pages/saved-products/saved-products.co
     RegisterComponent,
     DesignersTabComponent,
     ShopCartComponent,
-    SavedProductsComponent
+    SavedProductsComponent,
+    OrderPageComponent
     
   ],
   imports: [

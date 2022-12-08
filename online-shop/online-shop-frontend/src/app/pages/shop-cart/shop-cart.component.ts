@@ -52,4 +52,8 @@ export class ShopCartComponent implements OnInit {
   goToProductShow(productId:number){
     this._router.navigate(["/productDetails/" + productId]);
   }
+
+  goToOrder(){
+    this._router.navigate(["/order"]);
+  }
 }
