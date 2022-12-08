@@ -19,6 +19,7 @@ import { DesignersTabComponent } from './pages/designers-tab/designers-tab.compo
 import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { SavedProductsComponent } from './pages/saved-products/saved-products.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { PlacedOrdersComponent } from './pages/placed-orders/placed-orders.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { OrderPageComponent } from './pages/order-page/order-page.component';
     DesignersTabComponent,
     ShopCartComponent,
     SavedProductsComponent,
-    OrderPageComponent
+    OrderPageComponent,
+    PlacedOrdersComponent
     
   ],
   imports: [

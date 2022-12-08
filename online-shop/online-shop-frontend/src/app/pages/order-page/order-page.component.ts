@@ -62,17 +62,16 @@ export class OrderPageComponent implements OnInit {
     transientOrder.billingData = this.billingDataObject;
     transientOrder.finalized = false;
 
-    console.log(transientOrder)
-
     for (let i = 0; i < this.products.length; i++) {
       transientOrder.product = this.products[i].product;
       transientOrder.quantity = this.products[i].quantity;
 
-      this._orderService.addOrder(transientOrder).subscribe((res:OrderProduct) => {
-        this._router.navigate(["/products"]); //TREBUIE REDIRECTIONARE CATRE COMENZI
-        alert("Comanda a fost plasată");
-      });
-    }
+      this._orderService.addOrder(transientOrder).subscribe((res:OrderProduct) =>
+        this._shopCartService.deleteProductInCart(this.products[i].id).subscribe()
+      );
+    alert("Comanda a fost plasată");
+    this._router.navigate(["/placedOrders"]);
+  }
   }
 
   getProductsFromOrder(){
