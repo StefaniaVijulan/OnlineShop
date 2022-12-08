@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',  JSON.stringify(data.jwt))
         localStorage.setItem('user', JSON.stringify(data.user))
         localStorage.setItem("type", "designer")
-        this._router.navigate(['/']).then(() => {
+
+          this._router.navigate(['/']).then(() => {
           window.location.href = window.location.href;
         });
         }

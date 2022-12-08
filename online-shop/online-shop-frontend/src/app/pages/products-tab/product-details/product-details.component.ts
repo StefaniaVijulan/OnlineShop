@@ -34,11 +34,11 @@ export class ProductDetailsComponent implements OnInit {
               private _shopCartService: ShopCartService, private _commentsService: CommentsService) { }
 
   ngOnInit(): void {
-    if(this.loggedUserStorage){
-      this.loggedUser = JSON.parse(this.loggedUserStorage);
-    }
     if(this.userTypeStorage){
       this.userType = this.userTypeStorage;
+      if(this.userType == 'user' && this.loggedUserStorage){
+        this.loggedUser = JSON.parse(this.loggedUserStorage);
+      }
     }
     this.idProduct = Number(this._route.snapshot.url.toString().replace('productDetails,',''));
     this.getCurrentProduct();

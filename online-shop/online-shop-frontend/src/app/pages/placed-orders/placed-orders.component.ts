@@ -16,9 +16,8 @@ import {Comments} from "../../models/comments";
 export class PlacedOrdersComponent implements OnInit {
 
   ordersPlaced: OrderProduct[] = [];
-  loggedUserClientStorage = localStorage.getItem('user');
+  loggedUserStorage = localStorage.getItem('user');
   loggedUserClient: User = new User();
-  loggedUserDesignerStorage = localStorage.getItem('designer');
   loggedUserDesigner: Designer = new Designer();
   userTypeStorage = localStorage.getItem('type');
   userType: String = '';
@@ -26,17 +25,20 @@ export class PlacedOrdersComponent implements OnInit {
   constructor(private _httpClient: HttpClient, private _router:Router, private _orderService:OrderService) { }
 
   ngOnInit(): void {
-    if(this.loggedUserClientStorage){
-      this.loggedUserClient = JSON.parse(this.loggedUserClientStorage);
-    }
-    if(this.loggedUserDesignerStorage){
-      this.loggedUserDesigner = JSON.parse(this.loggedUserDesignerStorage);
-    }
     if(this.userTypeStorage){
       this.userType = this.userTypeStorage;
-    }
+      if(this.loggedUserStorage){
+        console.log(this.loggedUserStorage)
+        console.log(this.userType)
+        if(this.userType == 'user'){
+          this.loggedUserClient = JSON.parse(this.loggedUserStorage);
+        }
+        else{
+          this.loggedUserDesigner = JSON.parse(this.loggedUserStorage);
+        }
+      }
+    }console.log("aici");
     this.getOrdersPlaced();
-
   }
 
   getOrdersPlaced(){
