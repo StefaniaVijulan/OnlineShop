@@ -26,12 +26,6 @@ export class PlacedOrdersComponent implements OnInit {
   constructor(private _httpClient: HttpClient, private _router:Router, private _orderService:OrderService) { }
 
   ngOnInit(): void {
-    this._router.events
-      .subscribe((event) => {
-        if (event instanceof NavigationStart) {
-          console.log( event.url)
-        }
-      });
     if(this.loggedUserClientStorage){
       this.loggedUserClient = JSON.parse(this.loggedUserClientStorage);
     }
