@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {environment} from "../../environments/environment";
 import {Product} from "../models/product";
 import {ShopCartService} from "./shopCart.service";
+import { Designer } from "../models/designer";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,13 @@ export class ProductService {
   public getProductById(id: number){
     console.log(id)
     return this._http.get<Product>(this.baseUrl + '/product/oneProduct/' + id);
+  }
+  public saveProduct(product: Product){
+    // console.log("designer is ", designer)
+    //return this._http.post<any>(this.baseUrl + "/designer/registerDesigner", designer)
+  }
+  public allDesigner(){
+    return this._http.get<Designer[]>(this.baseUrl + '/designer/all')
   }
 
 }

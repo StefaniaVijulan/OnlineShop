@@ -1,19 +1,18 @@
 package com.example.onlineshop.security.services;
 
 import com.example.onlineshop.security.models.Designer;
-import com.example.onlineshop.security.models.User;
+import com.example.onlineshop.security.models.Product;
 import com.example.onlineshop.security.repositories.DesignerRepository;
+import com.example.onlineshop.security.repositories.ProductRepository;
 import com.example.onlineshop.security.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +24,9 @@ public class DesignerService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -65,5 +67,28 @@ public class DesignerService{
             }
         }
         return designers;
+    }
+
+    public List<Product> getAllMyProducts(Long myId){
+        List<Product> products = new ArrayList<>();
+        for(int i=0; i< productRepository.findAll().size(); i++){
+            if(productRepository.findAll().get(i).getDesigner().getId().equals(myId)){
+                if(!productRepository.findAll().get(i).getStatus().equals("refuzat")){
+                    products.add(productRepository.findAll().get(i));
+                }
+            }
+        }
+        return products;
+    }
+
+    public Product editStatusProduct(Long productId, String newStatus){
+        for(int i=0; i<productRepository.findAll().size(); i++)
+            if(productRepository.findAll().get(i).getId().equals(productId)) {
+                productRepository.findAll().get(i).setStatus(newStatus);
+                productRepository.save(productRepository.findAll().get(i));
+                return productRepository.findAll().get(i);
+
+            }
+        return null;
     }
 }

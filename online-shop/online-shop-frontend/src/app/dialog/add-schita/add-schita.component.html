@@ -1,0 +1,29 @@
+<h2 style="text-align: center;">Adauga schita</h2>
+<p>Suntem foarte bucuroși să îi dăm viață ideii tale. Nu ezita să fi cât mai creativ și să specifici toate detaliile care dorești să apară pe festivemtația ta</p>
+
+<mat-dialog-content >
+    <mat-error style="text-align: center;">{{msg}}</mat-error>
+    <form #registerform="ngForm" [formGroup]="firstFormGroup" style="text-align: center;">
+      <!--  <mat-error style="text-align: center;">{{this.msg}}</mat-error>-->
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Numele produsului</mat-label>
+        <input matInput placeholder="ex. Pluza eleganta" formControlName="productName" required>
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Descriere produsului</mat-label>
+        <input matInput placeholder="" formControlName="description" required>
+      </mat-form-field><br>
+    </form>
+    <mat-form-field appearance="fill">
+            <mat-label>Cardiolog</mat-label>
+            <mat-select [formControl]="selectedDesigner" required name="designer">
+            <mat-option *ngFor="let designer of allDesginersList" [value]="designer.id">
+                {{designer.firstName}} {{designer.lastName}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+      <button [disabled]="registerform.form.invalid" class="button-prog" role="button"
+        (click)="addSchita()" style="margin-left: 30%; color: white; background-color: #074f57;">Adauga schita</button>
+  
+  </mat-dialog-content>

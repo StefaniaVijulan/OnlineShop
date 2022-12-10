@@ -4,6 +4,7 @@ import com.example.onlineshop.security.config.JwtUtil;
 import com.example.onlineshop.security.dto.LoginDesignerResponse;
 import com.example.onlineshop.security.dto.LoginRequest;
 import com.example.onlineshop.security.models.Designer;
+import com.example.onlineshop.security.models.Product;
 import com.example.onlineshop.security.services.DesignerService;
 import com.example.onlineshop.security.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -68,5 +69,14 @@ public class DesignerController {
     public ResponseEntity<List<Designer>> getProducts()
     {
         return ResponseEntity.ok(designerService.getDesigners());
+    }
+
+    @GetMapping(path = "/myproducts")
+    public List<Product> getMyProducts(@RequestParam Long id) {
+        return designerService.getAllMyProducts(id);
+    }
+    @PutMapping(path = "/editproduct")
+    public Product editStatusProduct(@RequestParam Long id, @RequestParam String status){
+        return designerService.editStatusProduct(id, status);
     }
 }

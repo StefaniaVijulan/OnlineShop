@@ -3,6 +3,8 @@ import {Product} from "../../models/product";
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../../services/product.service";
 import {Router} from "@angular/router";
+import { MatDialog } from '@angular/material/dialog';
+import { AddSchitaComponent } from 'src/app/dialog/add-schita/add-schita.component';
 
 @Component({
   selector: 'app-products-tab',
@@ -22,7 +24,7 @@ export class ProductsTabComponent implements OnInit {
   searchText: string = "";
   productsList: Product[] = [];
 
-  constructor(private _httpClient: HttpClient, private _router:Router, private _productService: ProductService) { }
+  constructor(private _httpClient: HttpClient, private _router:Router, private _productService: ProductService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -38,4 +40,9 @@ export class ProductsTabComponent implements OnInit {
   goToProductShow(productId:number){
     this._router.navigate(["/productDetails/" + productId]);
   }
+  openDialog(){ 
+    this.dialog.open(AddSchitaComponent,{ 
+      width: '20%',   
+    })
+ };
 }

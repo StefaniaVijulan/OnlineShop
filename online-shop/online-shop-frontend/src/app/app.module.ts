@@ -20,8 +20,13 @@ import { ShopCartComponent } from './pages/shop-cart/shop-cart.component';
 import { SavedProductsComponent } from './pages/saved-products/saved-products.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { PlacedOrdersComponent } from './pages/placed-orders/placed-orders.component';
-
-
+import { SchiteComponent } from './pages/schite/schite.component';
+import { AddSchitaComponent } from './dialog/add-schita/add-schita.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatOptionModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +40,9 @@ import { PlacedOrdersComponent } from './pages/placed-orders/placed-orders.compo
     ShopCartComponent,
     SavedProductsComponent,
     OrderPageComponent,
-    PlacedOrdersComponent
+    PlacedOrdersComponent,
+    SchiteComponent,
+    AddSchitaComponent
     
   ],
   imports: [
@@ -48,9 +55,15 @@ import { PlacedOrdersComponent } from './pages/placed-orders/placed-orders.compo
     MatButtonModule,
     BrowserAnimationsModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
+    
   ],
-
+  exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
   bootstrap: [AppComponent]
 })

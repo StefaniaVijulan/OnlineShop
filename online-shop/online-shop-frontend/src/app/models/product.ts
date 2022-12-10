@@ -9,7 +9,7 @@ export class Product {
   price:number=0;
   description:string ='';
   designer: Designer = new Designer();
-
+  status:string=''
   constructor(){
   }
 

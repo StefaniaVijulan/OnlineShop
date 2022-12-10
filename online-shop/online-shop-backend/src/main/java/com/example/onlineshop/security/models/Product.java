@@ -32,6 +32,10 @@ public class Product {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "status")
+    private String status;
+    // acceptat, refuzat, in_pregatire, nepreluat, finalizat
+
     @ManyToOne
     private Designer designer;
 
