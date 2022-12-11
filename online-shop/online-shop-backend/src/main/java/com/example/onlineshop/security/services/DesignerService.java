@@ -1,5 +1,6 @@
 package com.example.onlineshop.security.services;
 
+import com.example.onlineshop.security.models.ChangeImg;
 import com.example.onlineshop.security.models.Designer;
 import com.example.onlineshop.security.models.Product;
 import com.example.onlineshop.security.repositories.DesignerRepository;
@@ -50,7 +51,10 @@ public class DesignerService{
         if (designerRepository.existsByEmail(designer.getEmail())) {
             //designerul exista
             return null;
+        }
 
+        if(designer.getImageDesigner() == null || designer.getImageDesigner().trim().isEmpty()){
+            designer.setImageDesigner("https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=");
         }
         designer.setPasswordDesigner(bCryptPasswordEncoder.encode(designer.getPasswordDesigner()));
 
@@ -90,5 +94,17 @@ public class DesignerService{
 
             }
         return null;
+    }
+
+    public Designer changeImage(String email, ChangeImg changeImg){
+        Designer designer = designerRepository.findByEmail(email);
+        if(changeImg.getImageUser() == null){
+            return null;
+        }
+        else{
+            designer.setImageDesigner(changeImg.getImageUser());
+            designerRepository.save(designer);
+        }
+        return designer;
     }
 }
