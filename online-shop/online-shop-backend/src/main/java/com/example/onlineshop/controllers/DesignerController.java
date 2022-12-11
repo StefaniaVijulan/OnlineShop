@@ -37,8 +37,6 @@ public class DesignerController {
 
     @PostMapping(path = "/loginDesigner")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception {
-        //    excelReadService.ReadDataFromExcel("src/main/resources/excelFile/UserDB.xlsx");
-
         try {
 
             authenticationManager.authenticate(
@@ -46,14 +44,12 @@ public class DesignerController {
                             loginRequest.getPassword()));
         }
         catch (Exception e) {
-            System.out.println(e);
             return null;
         }
         final UserDetails userDetails = userService
                 .loadUserByUsername(loginRequest.getUsername());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         Designer currentUser= designerService.loginDesigner(loginRequest.getUsername(), loginRequest.getPassword());
-        System.out.println("currentUser "+ currentUser);
         return ResponseEntity.ok(new LoginDesignerResponse(jwt, currentUser));
     }
 

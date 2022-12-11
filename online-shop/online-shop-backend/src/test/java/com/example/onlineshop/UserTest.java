@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.awt.*;
+import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -56,6 +57,18 @@ public class UserTest {
     }
 
     @Test
+    public void register_shouldFail() throws Exception {
+        mockUser.setEmail("register_shouldFaild@gmail.com");
+        userService.registerUser(mockUser);
+        try {
+            userService.registerUser(mockUser);
+        } catch (IOException e){
+            assert e.getMessage().equals("Exista userul deja");
+        }
+    }
+
+
+    @Test
     public void register_login() throws Exception {
 
         email = "register_login@gmail.com";
@@ -76,7 +89,7 @@ public class UserTest {
         userService.registerUser(mockUser);
 
         try {
-            userService.loginUser(email, password);
+            userService.loginUser("wrongemail", password);
         } catch (IllegalStateException e){
             assert e.getMessage().equals("User don't exist");
         }

@@ -63,8 +63,5 @@ public class User implements UserDetails {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+
 }
