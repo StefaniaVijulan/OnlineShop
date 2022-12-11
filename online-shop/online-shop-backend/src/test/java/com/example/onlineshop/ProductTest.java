@@ -20,6 +20,7 @@ public class ProductTest {
     @Autowired
     private ProductService productService;
 
+    //// test
     @Before
     public void setUp(){
         mockProduct.setProductName("test");
