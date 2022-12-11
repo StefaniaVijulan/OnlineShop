@@ -65,4 +65,11 @@ public class DesignerTests {
             assert e.getMessage().equals("User don't exist!");
         }
     }
+
+    @Test
+    public void get_designers(){
+        designerService.addDesigner(mockDesigner);
+
+        assert  !designerService.getDesigners().isEmpty();
+    }
 }

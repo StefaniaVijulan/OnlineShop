@@ -68,4 +68,11 @@ public class ProductTest {
 
     }
 
+    @Test
+    public void get_products(){
+        productService.addProduct(mockProduct);
+
+        assert  !productService.getProducts().isEmpty();
+    }
+
 }
