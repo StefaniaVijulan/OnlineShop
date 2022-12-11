@@ -42,4 +42,8 @@ public class ProductController {
         productService.deleteProduct(id);
     }
 
+    @GetMapping("/searchProduct")
+    public String searchProduct(@RequestParam String productName){
+        return productService.searchProduct(productName);
+    }
 }

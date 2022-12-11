@@ -48,4 +48,15 @@ public class ProductService {
             productRepository.delete(productFound.get());
         }
     }
+
+    public String searchProduct(String nameProduct){
+        Product product = productRepository.findByProductName(nameProduct);
+        if(product != null)
+        {
+            return "Produsul a fost gasit";
+        }
+        else{
+            return "Nu exista acest produs";
+        }
+    }
 }
