@@ -37,11 +37,35 @@ public class ProductTest {
     public void add_delete(){
         Product addedProduct = productService.addProduct(mockProduct);
 
-        productService.addProduct(mockProduct);
-
         productService.deleteProduct(addedProduct.getId());
 
         assert productService.getProduct(addedProduct.getId()).isEmpty();
+    }
+
+    @Test
+    public void search_product(){
+       productService.addProduct(mockProduct);
+
+       Product mockProduct1 = new Product();
+       mockProduct1.setProductName("Test2");
+
+       productService.addProduct(mockProduct1);
+
+       assert productService.searchProduct("Test2").equals("Produsul a fost gasit");
+
+    }
+
+    @Test
+    public void search_product_notfound(){
+        productService.addProduct(mockProduct);
+
+        Product mockProduct1 = new Product();
+        mockProduct1.setProductName("Test1");
+
+        productService.addProduct(mockProduct1);
+
+        assert productService.searchProduct("NotExists").equals("Nu exista acest produs");
+
     }
 
 }
