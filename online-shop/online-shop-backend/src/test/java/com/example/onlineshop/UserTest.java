@@ -83,6 +83,21 @@ public class UserTest {
     }
 
     @Test
+    public void register_passwordFail() throws Exception {
+        email = "register_passwordFail@gmail.com";
+
+        mockUser.setEmail(email);
+        mockUser.setPassword("parola");
+        userService.registerUser(mockUser);
+
+        try {
+            userService.loginUser(email, "parola2");
+        } catch (IllegalStateException e){
+            assert e.getMessage().equals("Passwords doesn't match");
+        }
+    }
+
+    @Test
     public void changePassword() throws Exception {
         email = "changePassword@gmail.com";
 
@@ -90,9 +105,18 @@ public class UserTest {
 
         userService.registerUser(mockUser);
 
-        User user = userService.changePassword(password, "password2", mockUser.getUsername());
+        User user = userService.changePassword(password, "password2", mockUser.getEmail());
 
         assert bCryptPasswordEncoder.matches("password2", user.getPassword());
+    }
+
+    @Test
+    public void changePassword_failed() throws Exception {
+        email = "changePassword_failed@gmail.com";
+        mockUser.setEmail(email);
+        userService.registerUser(mockUser);
+        User user = userService.changePassword("password3", "password2", mockUser.getUsername());
+        assert user == null;
     }
 
     @Test

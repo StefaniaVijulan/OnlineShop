@@ -19,13 +19,7 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public List<Product> getProducts() {
-        List<Product> products = new ArrayList<>();
-        for (int i = 0; i < productRepository.findAll().size(); i++) {
-            {
-                products.add(productRepository.findAll().get(i));
-            }
-        }
-        return products;
+        return productRepository.findAll();
     }
 
     public Product addProduct(Product product)
@@ -39,13 +33,16 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public void deleteProduct(Long id)
+    public String deleteProduct(Long id)
     {
         Optional<Product> productFound = productRepository.findById(id);
         if(productFound.isPresent())
         {
-            System.out.println(productFound.get());
             productRepository.delete(productFound.get());
+            return "Produsul a fost sters!";
+        }
+        else{
+            return "Produsul nu exista!";
         }
     }
 

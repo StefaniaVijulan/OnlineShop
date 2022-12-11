@@ -45,25 +45,15 @@ public class DesignerService{
 
     public Designer addDesigner(Designer designer) {
         if (designerRepository.existsByEmail(designer.getEmail())) {
-            //designerul exista
             return null;
-
         }
-        String parola = "parola";
-        designer.setPasswordDesigner(bCryptPasswordEncoder.encode(parola));
-
+        designer.setPasswordDesigner(bCryptPasswordEncoder.encode(designer.getPasswordDesigner()));
         designer.setRole("DESIGNER");
         designerRepository.save(designer);
         return designer;
     }
 
     public List<Designer> getDesigners() {
-        List<Designer> designers = new ArrayList<>();
-        for (int i = 0; i < designerRepository.findAll().size(); i++) {
-            {
-                designers.add(designerRepository.findAll().get(i));
-            }
-        }
-        return designers;
+        return designerRepository.findAll();
     }
 }

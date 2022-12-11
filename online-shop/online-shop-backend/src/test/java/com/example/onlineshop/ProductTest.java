@@ -21,6 +21,7 @@ public class ProductTest {
     private ProductService productService;
 
     //// test
+
     @Before
     public void setUp(){
         mockProduct.setProductName("test");
@@ -38,10 +39,15 @@ public class ProductTest {
     public void add_delete(){
         Product addedProduct = productService.addProduct(mockProduct);
 
-        productService.deleteProduct(addedProduct.getId());
+        assert productService.deleteProduct(addedProduct.getId()).equals("Produsul a fost sters!");
 
-        assert productService.getProduct(addedProduct.getId()).isEmpty();
     }
+
+    @Test
+    public void add_delete_failed(){
+        assert productService.deleteProduct(1000L).equals("Produsul nu exista!");
+    }
+
 
     @Test
     public void search_product(){
@@ -67,6 +73,13 @@ public class ProductTest {
 
         assert productService.searchProduct("NotExists").equals("Nu exista acest produs");
 
+    }
+
+    @Test
+    public void get_products(){
+        productService.addProduct(mockProduct);
+
+        assert  !productService.getProducts().isEmpty();
     }
 
 }

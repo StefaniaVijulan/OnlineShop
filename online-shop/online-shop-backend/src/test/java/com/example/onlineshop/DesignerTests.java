@@ -26,11 +26,15 @@ public class DesignerTests {
     private String firstName = "test";
     private String lastName = "test";
 
+    private String password = "parola";
+
+
     @Before
     public void setUp() {
         mockDesigner.setEmail(email);
         mockDesigner.setFirstNameDesigner(firstName);
         mockDesigner.setLastNameDesigner(lastName);
+        mockDesigner.setPasswordDesigner(password);
     }
 
     @Test
@@ -49,7 +53,7 @@ public class DesignerTests {
     }
 
     @Test
-    public void register_login() throws Exception {
+    public void register_login() {
         designerService.addDesigner(mockDesigner);
 
         designerService.loginDesigner(email, "parola");
@@ -64,5 +68,23 @@ public class DesignerTests {
         } catch (IllegalStateException e){
             assert e.getMessage().equals("User don't exist!");
         }
+    }
+
+    @Test
+    public void register_login_password_shouldFail() {
+        designerService.addDesigner(mockDesigner);
+
+        try {
+            designerService.loginDesigner(email, "parola2");
+        } catch (IllegalStateException e){
+            assert e.getMessage().equals("Passwords doesn't match");
+        }
+    }
+
+    @Test
+    public void get_designers(){
+        designerService.addDesigner(mockDesigner);
+
+        assert  !designerService.getDesigners().isEmpty();
     }
 }

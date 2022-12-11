@@ -31,37 +31,28 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        System.out.println("++"+email);
         UserDetails user = userRepository.findByEmail(email);
-        System.out.println("=>"+ user);
 
-        if(user == null) {
-            user = designerRepository.findByEmail((email));
-        }
         if(user == null){
             throw new UsernameNotFoundException(
                     String.format("username with %s email not found", email));
         }
-
         return user;
     }
     public User loginUser(String email, String password){
         if (!userRepository.existsByEmail(email)) {
             throw new IllegalStateException("User don't exist");
         }
-
         User userProfile = userRepository.findByEmail(email);
         String pass = userProfile.getPassword();
         if (!bCryptPasswordEncoder.matches(password, pass)) {
             throw new IllegalStateException("Passwords doesn't match");
 
         }
-        System.out.println(userProfile);
         return userProfile;
     }
 
     public User registerUser(User user) throws Exception {
-        //verificam daca un user cu email-ul respectiv se gaseste deja
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(user.getEmail()));
         if (userOptional.isPresent()) {
             throw new IOException("Exista userul deja");
@@ -69,45 +60,31 @@ public class UserService implements UserDetailsService {
         else
         {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setRole("CLIENT");
+            userRepository.saveAndFlush(user);
         }
-        userRepository.saveAndFlush(user);
         return user;
-    };
-    public User changePassword(String oldPass, String newPass, String cnpC) throws Exception {
-        String username;
-        username = userRepository.findByEmail(cnpC).getEmail();
-        User currentUser = this.userRepository.findByEmail(username);
-        if(this.bCryptPasswordEncoder.matches(oldPass, currentUser.getPassword()))
+    }
+
+    public User changePassword(String oldPass, String newPass, String email) {
+        User currentUser = this.userRepository.findByEmail(email);
+        if(bCryptPasswordEncoder.matches(oldPass,(currentUser.getPassword()))){
+            currentUser.setPassword(this.bCryptPasswordEncoder.encode(newPass));
+            this.userRepository.save(currentUser);
+            return currentUser;
+        }
+        else
         {
-            if(oldPass.equals(newPass))
-            {System.out.println("Noua parola este la fel ca parola curenta");
-                return null;}
-            else
-            {
-                currentUser.setPassword(this.bCryptPasswordEncoder.encode(newPass));
-
-                this.userRepository.save(currentUser);
-                System.out.println("Password change");
-            }
-        } else
-        // Parola curenta nu se potriveste
-        {
-            System.out.println("Parola curenta nu se potriveste");
-            return null;}
-
-
-        return currentUser;
+            return null;
+        }
     }
     public User forgotPass(String email) {
         User currentUser = userRepository.findByEmail(email);
         if(currentUser == null)
             return null;
-        System.out.println(currentUser);
         String newParola = "parola2";
-
         currentUser.setPassword(this.bCryptPasswordEncoder.encode(newParola));
         this.userRepository.save(currentUser);
-        System.out.println("Password reset");
         return currentUser;
     }
 
