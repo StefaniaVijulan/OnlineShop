@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-custom ">
+
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <a class ="nav-link"  routerLink="" routerLinkActive="active">Despre noi</a>
+      <a class ="nav-link"  routerLink="/products" routerLinkActive="active">Produse</a>
+      <a class ="nav-link"  routerLink="/designers" routerLinkActive="active">Designeri</a>
+      <a class ="nav-link"  routerLink="/placedOrders" routerLinkActive="active" *ngIf="isClient">Comenzi</a>
+      <a class ="nav-link"  routerLink="/shopCart" routerLinkActive="active" *ngIf="isClient">Coș de cumpărături</a>
+      <a class ="nav-link"  routerLink="/savedProducts" routerLinkActive="active" *ngIf="isClient">Produse salvate</a>
+      <a class ="nav-link"  routerLink="/schiteAsignate" routerLinkActive="active" *ngIf="isDesigner">Schite asignate</a>
+      <a class ="nav-link"  routerLink="/schiteAsignate" routerLinkActive="active" *ngIf="isClient">Schitele mele</a>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <a class ="nav-link" *ngIf = "!_loginService.loggedIn()" routerLink="/autentificare" routerLinkActive="active">Autentificare</a>
+      <a class ="nav-link" *ngIf = "!_loginService.loggedIn()" routerLink="/inregistrare" routerLinkActive="active">Înregistrare</a>
+
+
+      <a class ="nav-link" *ngIf = "_loginService.loggedIn()" (click)="signOut()">Ieși din cont</a>
+    </ul>
+  </div>
+</nav>
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h2 class="modal-title" style="margin: 0 auto;">Editare profil</h2>
+     </div>
+     <div class="modal-body">
+       <p><b>Email: </b></p>
+     </div>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+     </div>
+   </div><!-- /.modal-content -->
+ </div><!-- /.modal-dialog -->
+</div><!-- /.modal !-->
+<router-outlet></router-outlet>
+

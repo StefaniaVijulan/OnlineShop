@@ -1,0 +1,54 @@
+
+<div  class="form-class">
+  <form #loginform="ngForm" style=" height: 250px;
+  margin: 5%;
+  border: 1px solid rgb(8, 1, 1);
+  padding-left:10%;
+  padding-right:10%;
+  text-align: center;
+  background-color: rgba(56,163,165,0.1);
+  height: 100%;">
+    <br>
+    <h1 style="align-items: center; margin: 10px;">
+      Înregistrare
+    </h1>
+    <small class="alert-danger" style="color: red;">{{message}}</small>
+    <div class="form-group">
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+        name="email" [(ngModel)]="loginRequest.username" required pattern="\w+@[a-zA-z_]+?\.[a-zA-Z]{2,3}$"
+        #email="ngModel" [class.is-invalid]="email.invalid && email.touched">
+      <div *ngIf="email.errors && (email.invalid && email.touched)">
+        <small class="text-danger" *ngIf="email.errors?.['required']">Email is a required field</small>
+        <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter the valid value of email</small>
+      </div>
+    </div>
+    <br>
+
+    <div class="form-group">
+
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+        [(ngModel)]="loginRequest.password" required #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched">
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Please introduce your
+        password</small>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault"  [(ngModel)]="isChecked" name="isChecked">
+      <label class="form-check-label" for="flexCheckDefault">
+        Doresc să îmi creez cont ca designer
+      </label>
+    </div>
+    <br>
+    <div class="text-center">
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn"
+        style="text-align: center; color: white; background-color: #074f57;" *ngIf="!isChecked" (click)="loginUser()">Înregistrare</button>
+        <button [disabled]="loginform.form.invalid" type="submit" class="btn"
+        style="text-align: center; color: white; background-color: #074f57;" *ngIf="isChecked" (click)="loginDesigner()">Înregistrare</button>
+    </div>
+    <br>
+    <p style="text-align: center;">You don't have an account? <br> <small class="float-right"
+        [routerLink]="['/autentificare']" style="color: #074f57;">Sign Now</small> </p>
+
+  </form>
+
+</div>

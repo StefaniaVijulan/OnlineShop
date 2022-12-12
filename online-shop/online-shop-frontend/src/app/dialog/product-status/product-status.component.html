@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-content>
+      <h2 class="example-h2">Actualizeaza statusul</h2>
+  
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="acceptat">Acceptata</mat-checkbox><br>
+        <mat-checkbox class="example-margin" [(ngModel)]="refuzat">Refuzata</mat-checkbox><br>
+        <mat-checkbox class="example-margin" [(ngModel)]="in_pregatire">In pregatire</mat-checkbox><br>
+        <mat-checkbox class="example-margin" [(ngModel)]="nepreluat">Nepreluat</mat-checkbox><br>
+        <mat-checkbox class="example-margin" [(ngModel)]="finalizat">Finalizat</mat-checkbox><br>
+      </section>
+    </mat-card-content>
+</mat-card>
+
+<div mat-dialog-actions [align]="'center'" >
+  <button class="button-prog" role="button" (click)="editStatus()" style="color: white; background-color: #074f57;">Salveaza</button>
+</div>

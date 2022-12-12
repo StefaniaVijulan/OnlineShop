@@ -1,0 +1,21 @@
+<div class="designer-list-general">
+    <h3 class="designer-page-title">Schite asignate</h3>
+    <div *ngFor="let product of myProducts" class="designer-container">
+      <img src="assets/images/UserPhoto.png"  alt="Product" class="user-img">
+      <div class="designer-details">
+          <span class="designer-contact">
+            <p class="designer-name">{{product.productName}} - {{product.status}} </p>
+          </span>
+        <p class="designer-description"> {{product.description}}</p>
+        <div class="row">
+            <div class="col-md-6 col-lg-10">
+                
+            </div>
+            <div class="col-md-2 col-lg-2">
+               <button style="text-align: center; margin-left:10px;color: white; background-color: #074f57;" (click)="openDialogStatus(product.id)" >Seteaza statusul comenzii</button> 
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

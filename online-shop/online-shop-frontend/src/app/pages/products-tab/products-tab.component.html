@@ -1,0 +1,27 @@
+<div>
+  <div class="row">
+   
+      <div class="search">
+        <input  class="search-input fa" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+          placeholder="Caută un produs">
+      </div>
+    
+    
+      <button class="btn"
+        style="width: 40%;margin: 20px auto;text-align: center; color: white; background-color: #074f57;"(click)="openDialog()">Adauga schita</button>
+    </div>
+
+  <div class="row product-list-general">
+    <div *ngFor="let product of productsList | searchFilter:searchText" class="col-md-4 col-sm-6 col-12">
+      <div class="card product-card-list">
+        <div class="card-body product-body">
+          <h5 class="card-title">{{product.productName}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <a (click)="goToProductShow(product.id)" class="btn button-details">Vezi detalii</a>
+        </div>
+        <div class="card-footer product-price">{{product.price}} lei</div>
+      </div>
+    </div>
+  </div>
+
+</div>

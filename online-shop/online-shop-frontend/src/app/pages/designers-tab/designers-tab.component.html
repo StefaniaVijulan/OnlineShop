@@ -1,0 +1,19 @@
+<div class="designer-list-general">
+  <h3 class="designer-page-title">Designers</h3>
+  <div *ngFor="let designer of designerList" class="designer-container">
+    <img src="assets/images/UserPhoto.png"  alt="Product" class="user-img">
+    <div class="designer-details">
+        <span class="designer-contact">
+          <p class="designer-name">{{designer.firstNameDesigner}} {{designer.lastNameDesigner}}</p>
+          <p class="designer-phone">{{designer.phoneDesigner}}</p>
+        </span>
+      <ul class="links">
+        <li>{{designer.email}}</li>
+        <li>{{designer.facebookDesigner}}</li>
+        <li>{{designer.linkedinDesigner}}</li>
+      </ul>
+      <p class="designer-description"> {{designer.detailDesigner}}</p>
+      <p class="designer-experience">Experiența mea: {{designer.experienceDesigner}}</p>
+    </div>
+  </div>
+</div>

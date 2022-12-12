@@ -1,0 +1,151 @@
+.product-container{
+  display: flex;
+  flex-direction: row;
+  gap: 3%;
+  justify-content: center;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 50px;
+  background-color: rgba(56,163,165,0.1);
+  padding: 25px;
+}
+
+.product-img{
+  width: 300px;
+  height: 300px;
+}
+
+.string-details{
+  border-left: rgba(211,211,211, 0.7) outset 2px;
+  padding-left: 25px;
+}
+
+.product-title{
+  margin-top: 50px;
+  margin-bottom:30px;
+  color: #074f57;
+  font-weight: bolder;
+  font-size: 25px;
+}
+
+
+.product-description-text{
+  font-weight: bolder;
+  font-size: 18px;
+  font-style: italic;
+  color: #38a3a5;
+  text-decoration: underline;
+  font-family: "Bodoni MT", sans-serif;
+}
+
+.product-description{
+  font-size: 17px;
+  font-family: Cambria, sans-serif;
+  text-align: justify;
+}
+
+.product-price{
+  padding-top: 40px;
+  font-size: 20px;
+  font-family: Cambria, sans-serif;
+  font-weight: bolder;
+  text-align: end;
+}
+
+.product-buttons{
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 15%;
+}
+
+.add-to-card-button{
+  background-color: #074f57;
+  color:white;
+  padding: 5px;
+  font-size: 15px;
+}
+.all-ratings{
+  padding-bottom: 20px;
+}
+.add-rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 5px 15% 20px;
+  padding-bottom: 10px;
+}
+
+.edit-rating{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.add-rating form, .edit-rating form{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#commentText, #editText{
+  width: 80%;
+}
+
+.button_class{
+  width: 19%;
+  background-color: #38a3a5;
+  color:black;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+}
+
+.edit-button{
+  background-color: #22577a;
+  color:white;
+  border: 2px solid #074f57;
+}
+
+.rating-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 70%;
+  margin: 5px 15%;
+}
+
+.rating-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  border-bottom: 1px groove grey;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.rating-info{
+  width: 70%;
+}
+
+.com-actions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 3%;
+}
+
+.com-description{
+  text-align: justify;
+  font-size: 15px;
+}
+
+.com-subdescription{
+  text-align: justify;
+  font-size: 12px;
+  font-style: italic;
+}
