@@ -51,7 +51,7 @@ import { SchiteleMeleComponent } from './pages/schitele-mele/schitele-mele.compo
     SchiteAsignateComponent,
     ProductStatusComponent,
     SchiteleMeleComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -62,7 +62,7 @@ import { SchiteleMeleComponent } from './pages/schitele-mele/schitele-mele.compo
     MatCardModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
