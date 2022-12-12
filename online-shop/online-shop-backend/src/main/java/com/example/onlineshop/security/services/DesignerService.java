@@ -96,15 +96,23 @@ public class DesignerService{
         return null;
     }
 
-    public Designer changeImage(String email, ChangeImg changeImg){
-        Designer designer = designerRepository.findByEmail(email);
-        if(changeImg.getImageUser() == null){
-            return null;
-        }
-        else{
-            designer.setImageDesigner(changeImg.getImageUser());
-            designerRepository.save(designer);
-        }
-        return designer;
+    public Product addImage(Long productId, String changeImg){
+        for(int i=0; i<productRepository.findAll().size(); i++)
+            if(productRepository.findAll().get(i).getId().equals(productId)) {
+                productRepository.findAll().get(i).setFinalProduct(changeImg);
+                productRepository.save(productRepository.findAll().get(i));
+                return productRepository.findAll().get(i);
+            }
+        return null;
+    }
+
+    public Product editPrice(Long productId, Integer newPrice){
+        for(int i=0; i<productRepository.findAll().size(); i++)
+            if(productRepository.findAll().get(i).getId().equals(productId)) {
+                productRepository.findAll().get(i).setPrice(newPrice);
+                productRepository.save(productRepository.findAll().get(i));
+                return productRepository.findAll().get(i);
+            }
+        return null;
     }
 }

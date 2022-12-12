@@ -80,8 +80,12 @@ public class DesignerController {
     public Product editStatusProduct(@RequestParam Long id, @RequestParam String status){
         return designerService.editStatusProduct(id, status);
     }
-    @PutMapping("/changeimage")
-    public Designer changeI(@RequestParam String email, @RequestBody ChangeImg changeImg){
-        return designerService.changeImage(email, changeImg);
+    @PutMapping(path = "/addImg")
+    public Product addImg(@RequestParam Long id, @RequestParam String img){
+        return designerService.addImage(id, img);
+    }
+    @PutMapping(path = "/editprice")
+    public Product editPriceProduct(@RequestParam Long id, @RequestParam Integer price){
+        return designerService.editPrice(id, price);
     }
 }
