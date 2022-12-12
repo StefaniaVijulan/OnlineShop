@@ -35,7 +35,7 @@
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault"  [(ngModel)]="isChecked" name="isChecked">
       <label class="form-check-label" for="flexCheckDefault">
-        Doresc să îmi creez cont ca designer
+        Doresc să ma conectez ca designer
       </label>
     </div>
     <br>
@@ -46,7 +46,7 @@
         style="text-align: center; color: white; background-color: #074f57;" *ngIf="isChecked" (click)="loginDesigner()">Înregistrare</button>
     </div>
     <br>
-    <p style="text-align: center;">You don't have an account? <br> <small class="float-right"
+    <p style="text-align: center;">Nu ai un cont? <br> <small class="float-right"
         [routerLink]="['/autentificare']" style="color: #074f57;">Sign Now</small> </p>
 
   </form>

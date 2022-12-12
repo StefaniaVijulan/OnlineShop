@@ -23,7 +23,8 @@
         </mat-option>
     </mat-select>
     </mat-form-field>
+    <app-upload-img style="margin-left: 60%" (giveURLtoCreate)="uploadAvatar($event)"> </app-upload-img> <br>
     <button class="button-prog" role="button"
-        (click)="addSchita()" style="margin-left: 30%; color: white; background-color: #074f57;">Adauga schita</button>
+        (click)="onSubmit()" style="margin-left: 30%; color: white; background-color: #074f57;">Adauga schita</button>
   
   </mat-dialog-content>

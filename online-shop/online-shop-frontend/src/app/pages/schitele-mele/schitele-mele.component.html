@@ -1,7 +1,9 @@
 <div class="designer-list-general">
     <h3 class="designer-page-title">Schitele mele</h3>
     <div *ngFor="let product of myProducts" class="designer-container">
-      <img src="assets/images/UserPhoto.png"  alt="Product" class="user-img">
+      <div *ngIf="product.sketching" >
+        <img [src]="product.sketching" class="user-img">
+      </div>
       <div class="designer-details">
           <span class="designer-contact">
             <p class="designer-name">{{product.productName}} - {{product.status}} </p>

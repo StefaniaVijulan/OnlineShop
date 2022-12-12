@@ -1,5 +1,7 @@
 <div class="product-container">
-  <img src="assets/images/ProductPhoto.png"  alt="Product" class="product-img">
+  <div *ngIf="currentProduct.finalProduct" >
+    <img [src]="currentProduct.finalProduct" class="product-img">
+  </div>
   <div class="string-details">
     <p class="product-title"> {{currentProduct.productName}}</p>
     <span class="product-description-container">

@@ -1,0 +1,13 @@
+<h2 style="text-align: center;">Seteaza pretul</h2>
+<mat-dialog-content >
+    <form #registerform="ngForm" [formGroup]="firstFormGroup" style="text-align: center;">
+      <!--  <mat-error style="text-align: center;">{{this.msg}}</mat-error>-->
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Seteaza pretul</mat-label>
+        <input matInput placeholder="4" formControlName="price" required>
+      </mat-form-field><br>
+    <button class="button-prog" role="button"
+        (click)="savePrice()" style="margin-left: 30%; color: white; background-color: #074f57;">Adauga pret</button>
+  </form>
+  </mat-dialog-content>

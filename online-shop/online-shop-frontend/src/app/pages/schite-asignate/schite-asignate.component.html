@@ -1,24 +1,31 @@
-<!--<div class="designer-list-general">
+<div class="designer-list-general">
     <h3 class="designer-page-title">Schite asignate</h3>
     <div *ngFor="let product of myProducts" class="designer-container">
-      <img src="assets/images/UserPhoto.png"  alt="Product" class="user-img">
+      <div *ngIf="!product.finalProduct">
+        <img [src]="product.sketching" class="user-img">
+      </div>
+      <div *ngIf="product.finalProduct">
+        <img [src]="product.finalProduct" class="user-img">
+      </div>
       <div class="designer-details">
           <span class="designer-contact">
             <p class="designer-name">{{product.productName}} - {{product.status}} </p>
           </span>
         <p class="designer-description"> {{product.description}}</p>
+
+        <p class="designer-name" *ngIf="product.price">Price: {{product.price}} LEI</p>
         <div class="row">
-            <div class="col-md-6 col-lg-10">
+            <div class="col-md-6 col-lg-6">
 
             </div>
-            <div class="col-md-2 col-lg-2">
-               <button style="text-align: center; margin-left:10px;color: white; background-color: #074f57;" (click)="openDialogStatus(product.id)" >Seteaza statusul comenzii</button>
+            <div class="col-md-2 col-lg-6">
+              <button style="text-align: center; margin-left:10px;margin-bottom:5px;color: white; background-color: #074f57;" (click)="editPrice(product.id)" *ngIf="!product.price  && product.status=='finalizat'">Seteaza pretul</button>
+              <button style="text-align: center; margin-left:10px;margin-bottom:5px;color: white; background-color: #074f57;" (click)="editImg(product.id)" *ngIf="!product.finalProduct && product.status=='finalizat'" >Adauga produs final</button>
+              <button style="text-align: center; margin-left:10px;margin-bottom:5px;color: white; background-color: #074f57;" (click)="openDialogStatus(product.id)" >Seteaza statusul comenzii</button>
             </div>
         </div>
-        <input type="URL" name="myURL" [(ngModel)]="myURL" placeholder="insert image URL here" (change)="onURLinserted() ">
 
-        <img [src]="imageToShow" alt="Place image title">
       </div>
     </div>
   </div>
--->
+

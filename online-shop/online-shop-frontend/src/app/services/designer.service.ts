@@ -25,4 +25,14 @@ export class DesignerService {
     console.log(this.myProductId)
     return this._http.put<any>(this.baseUrl + "/designer/editproduct?id="+this.myProductId+"&status=" +status, null)
   }
+  public addPhoto(photo: any){
+    console.log(photo)
+    console.log(this.myProductId)
+    return this._http.put<any>(this.baseUrl + "/designer/addImg?id="+this.myProductId+"&img=" +photo, null)
+  }
+  public editPrice(price: any){
+    console.log(price)
+    console.log(this.myProductId)
+    return this._http.put<any>(this.baseUrl + "/designer/editprice?id="+this.myProductId+"&price=" +price, null)
+  }
 }

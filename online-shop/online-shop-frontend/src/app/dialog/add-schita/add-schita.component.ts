@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { concat } from 'rxjs';
+import { ChangeImg } from 'src/app/models/changeImg';
 import { Designer } from 'src/app/models/designer';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,7 +15,8 @@ import {User} from "../../models/user";
 })
 export class AddSchitaComponent implements OnInit {
   firstFormGroup!: FormGroup;
-  msg = ''
+  msg = '';
+  form: any ={};
   allDesginersList: any;
   selectedDesigner:any;
   product = new Product();
@@ -22,7 +24,7 @@ export class AddSchitaComponent implements OnInit {
   userTypeStorage = localStorage.getItem('type');
   userType: String = '';
   loggedUser: User = new User();
-
+  changeImg: ChangeImg | undefined;
   constructor( private dialogref: MatDialogRef <AddSchitaComponent>,
     private _formBuilder: FormBuilder,private productService: ProductService) { }
 
@@ -44,6 +46,17 @@ export class AddSchitaComponent implements OnInit {
     this.getDesigners()
   }
   addSchita(){
+   
+  }
+  getDesigners(){
+    return this.productService.allDesigner()
+      .subscribe((res: Designer[]) => {
+        this.allDesginersList = res;
+        console.log(this.allDesginersList)
+      })
+  }
+
+  onSubmit(){
     this.product.description = this.firstFormGroup.value.description
     this.product.productName = this.firstFormGroup.value.productName
     this.product.status = this.firstFormGroup.value.status
@@ -53,17 +66,13 @@ export class AddSchitaComponent implements OnInit {
       }
     }
     this.product.user = this.loggedUser;
-    // console.log(this.product)
+    this.product.sketching = this.form.avatar;
     return this.productService.saveProduct(this.product).subscribe((res =>{
       window.location.reload();
       this.dialogref.close("add");
     }))
-  }
-  getDesigners(){
-    return this.productService.allDesigner()
-      .subscribe((res: Designer[]) => {
-        this.allDesginersList = res;
-        console.log(this.allDesginersList)
-      })
-  }
+    }
+    uploadAvatar($event: any){
+      this.form.avatar = $event;
+    }
 }

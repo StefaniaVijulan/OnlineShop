@@ -31,7 +31,13 @@ import { SchiteAsignateComponent } from './pages/schite-asignate/schite-asignate
 import { ProductStatusComponent } from './dialog/product-status/product-status.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SchiteleMeleComponent } from './pages/schitele-mele/schitele-mele.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import 'firebase/storage';
+import { environment } from 'src/environments/environment.prod';
+import { UploadImgComponent } from './pages/upload-img/upload-img.component';
+import { EditPriceComponent } from './dialog/edit-price/edit-price.component';
+import { EditPhotoComponent } from './dialog/edit-photo/edit-photo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +56,10 @@ import { SchiteleMeleComponent } from './pages/schitele-mele/schitele-mele.compo
     AddSchitaComponent,
     SchiteAsignateComponent,
     ProductStatusComponent,
-    SchiteleMeleComponent
-
+    SchiteleMeleComponent,
+    UploadImgComponent,
+    EditPriceComponent,
+    EditPhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,10 @@ import { SchiteleMeleComponent } from './pages/schitele-mele/schitele-mele.compo
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+
   ],
   exports: [ MatFormFieldModule, MatInputModule ],
   providers: [],
