@@ -1,4 +1,4 @@
-<div class="designer-list-general">
+<!--<div class="designer-list-general">
     <h3 class="designer-page-title">Schite asignate</h3>
     <div *ngFor="let product of myProducts" class="designer-container">
       <img src="assets/images/UserPhoto.png"  alt="Product" class="user-img">
@@ -9,13 +9,16 @@
         <p class="designer-description"> {{product.description}}</p>
         <div class="row">
             <div class="col-md-6 col-lg-10">
-                
+
             </div>
             <div class="col-md-2 col-lg-2">
-               <button style="text-align: center; margin-left:10px;color: white; background-color: #074f57;" (click)="openDialogStatus(product.id)" >Seteaza statusul comenzii</button> 
+               <button style="text-align: center; margin-left:10px;color: white; background-color: #074f57;" (click)="openDialogStatus(product.id)" >Seteaza statusul comenzii</button>
             </div>
         </div>
+        <input type="URL" name="myURL" [(ngModel)]="myURL" placeholder="insert image URL here" (change)="onURLinserted() ">
+
+        <img [src]="imageToShow" alt="Place image title">
       </div>
     </div>
   </div>
-  
+-->

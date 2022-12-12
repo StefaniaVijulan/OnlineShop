@@ -21,8 +21,9 @@ export class AppComponent {
   ngOnInit(){
     if(localStorage.getItem('type')=="user"){
       this.isClient = true;
-    } else if(localStorage.getItem('type')=="designer"){
-      this.isDesigner == true;
+    } else
+      if(localStorage.getItem('type')=="designer"){
+      this.isDesigner = true;
     }
   }
 

@@ -5,6 +5,7 @@ import { concat } from 'rxjs';
 import { Designer } from 'src/app/models/designer';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-add-schita',
@@ -17,6 +18,11 @@ export class AddSchitaComponent implements OnInit {
   allDesginersList: any;
   selectedDesigner:any;
   product = new Product();
+  loggedUserStorage = localStorage.getItem('user');
+  userTypeStorage = localStorage.getItem('type');
+  userType: String = '';
+  loggedUser: User = new User();
+
   constructor( private dialogref: MatDialogRef <AddSchitaComponent>,
     private _formBuilder: FormBuilder,private productService: ProductService) { }
 
@@ -26,6 +32,14 @@ export class AddSchitaComponent implements OnInit {
       description: ['', Validators.required],
       status: "nepreluat"
     });
+
+    if(this.userTypeStorage){
+      this.userType = this.userTypeStorage;
+      if(this.userType == 'user' && this.loggedUserStorage){
+        this.loggedUser = JSON.parse(this.loggedUserStorage);
+      }
+    }
+
     this.selectedDesigner = new FormControl();
     this.getDesigners()
   }
@@ -38,6 +52,7 @@ export class AddSchitaComponent implements OnInit {
         this.product.designer = this.allDesginersList[i]
       }
     }
+    this.product.user = this.loggedUser;
     // console.log(this.product)
     return this.productService.saveProduct(this.product).subscribe((res =>{
       window.location.reload();

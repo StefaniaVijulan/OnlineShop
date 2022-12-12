@@ -11,6 +11,7 @@ import {SavedProductsComponent} from "./pages/saved-products/saved-products.comp
 import {OrderPageComponent} from "./pages/order-page/order-page.component";
 import {PlacedOrdersComponent} from "./pages/placed-orders/placed-orders.component";
 import { SchiteAsignateComponent } from './pages/schite-asignate/schite-asignate.component';
+import {SchiteleMeleComponent} from "./pages/schitele-mele/schitele-mele.component";
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'schiteAsignate',
     component: SchiteAsignateComponent
+  },
+  {
+    path: 'schiteClient',
+    component: SchiteleMeleComponent
   }
 ];
 
