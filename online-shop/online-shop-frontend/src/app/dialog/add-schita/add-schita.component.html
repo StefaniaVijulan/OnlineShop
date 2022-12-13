@@ -15,7 +15,7 @@
         <input matInput placeholder="" formControlName="description" required>
       </mat-form-field><br>
     </form>
-    <mat-form-field appearance="fill" style="margin-left: 20%;">
+    <mat-form-field appearance="fill" style="margin-left: 12%;">
             <mat-label>Designer</mat-label>
     <mat-select [formControl]="selectedDesigner" required name="designer">
         <mat-option *ngFor="let designer of allDesginersList" [value]="designer.id">
@@ -26,5 +26,5 @@
     <app-upload-img style="margin-left: 60%" (giveURLtoCreate)="uploadAvatar($event)"> </app-upload-img> <br>
     <button class="button-prog" role="button"
         (click)="onSubmit()" style="margin-left: 30%; color: white; background-color: #074f57;">Adauga schita</button>
-  
+
   </mat-dialog-content>
