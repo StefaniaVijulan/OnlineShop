@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         console.log("response recive");
         console.log(data)
        this.msg="Register successful";
-        this._router.navigate(['/login']);
+        this._router.navigate(['/inregistrare']);
       },
       error =>{
         console.log("exception occured");
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
       }
     )
   }
-  
+
   registerDesigner(){
     this.designer.email = this.user1.email
     this.designer.firstNameDesigner = this.user1.firstName

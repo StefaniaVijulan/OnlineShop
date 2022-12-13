@@ -31,6 +31,7 @@ export class ProductService {
     return this._http.get<Designer[]>(this.baseUrl + '/designer/all')
   }
   public getMyProduct(){
+    console.log(localStorage.getItem("id_user"))
     return this._http.get<Designer[]>(this.baseUrl + '/user/myproducts?id=' + localStorage.getItem("id_user"));
   }
 }

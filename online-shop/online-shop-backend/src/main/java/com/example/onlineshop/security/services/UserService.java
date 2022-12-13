@@ -121,7 +121,8 @@ public class UserService implements UserDetailsService {
     public List<Product> getAllMyProducts(Long myId){
         List<Product> products = new ArrayList<>();
         for(int i=0; i< productRepository.findAll().size(); i++){
-            if(productRepository.findAll().get(i).getUser().getId().equals(myId)){
+            if(productRepository.findAll().get(i).getUser()!=null)
+                if(productRepository.findAll().get(i).getUser().getId().equals(myId)){
 
                     products.add(productRepository.findAll().get(i));
                 }
