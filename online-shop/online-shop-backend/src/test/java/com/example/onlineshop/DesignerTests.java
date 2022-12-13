@@ -26,11 +26,14 @@ public class DesignerTests {
     private String firstName = "test";
     private String lastName = "test";
 
+    private String password = "password";
+
     @Before
     public void setUp() {
         mockDesigner.setEmail(email);
         mockDesigner.setFirstNameDesigner(firstName);
         mockDesigner.setLastNameDesigner(lastName);
+        mockDesigner.setPasswordDesigner(password);
     }
 
     @Test
@@ -52,7 +55,7 @@ public class DesignerTests {
     public void register_login() throws Exception {
         designerService.addDesigner(mockDesigner);
 
-        designerService.loginDesigner(email, "parola");
+        designerService.loginDesigner(email, "password");
     }
 
     @Test
